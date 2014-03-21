@@ -1,0 +1,6 @@
+{ config, pkgs, ... }:
+
+{
+  networking.extraHosts = ''
+  ''; 
+}
