@@ -32,4 +32,9 @@
     chmod a+w $(realpath /sys/class/backlight/intel_backlight/brightness)
     chmod a+w $(realpath '/sys/class/leds/smc::kbd_backlight/brightness')
   '';
+
+  services.cron.systemCronJobs = 
+    [ "*/5 * * * * vi /home/vi/bin/cron/courier" 
+      "*/5 * * * * vi /home/vi/bin/cron/dwarf"
+    ];
 }
