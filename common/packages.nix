@@ -76,6 +76,7 @@ in {
  nixpkgs.config = {
    packageOverrides = pkgs: {
       surf    = pkgs.callPackage ./packages/surf {};
+      mutt    = pkgs.callPackage ./packages/mutt {};
       zathura = recurseIntoAttrs
         (let 
           callPackage = newScope pkgs.zathuraCollection;
