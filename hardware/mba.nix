@@ -38,6 +38,11 @@
       options = "rw,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro,relatime";
     };
 
+  fileSystems."/media/wadler" = 
+    { device = "/dev/sda2";
+      fsType = "hfsplus";
+    };
+
   swapDevices =[ ];
 
   nix.maxJobs = 4;
