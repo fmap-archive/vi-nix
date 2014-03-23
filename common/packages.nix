@@ -20,6 +20,7 @@ in {
     dzen2
     python27Packages.mutagen
     xorg.xwininfo
+    xlibs.xev
     cacert
     chromium
     feh
