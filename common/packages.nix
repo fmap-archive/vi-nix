@@ -11,6 +11,7 @@ in {
     #amphetype
     #mnemosyne
     acpi
+    acpid
     spotify
     psmisc
     xlibs.xkbcomp
