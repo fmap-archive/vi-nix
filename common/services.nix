@@ -11,6 +11,10 @@
       isCharging() { grep -qiP '(?<!dis)charging' /sys/class/power_supply/BAT*/status; }
       if `lidClosed`; then isCharging || poweroff; fi
     '';
+    acEventCommands = ''
+      isCharging() { grep -qiP '(?<!dis)charging' /sys/class/power_supply/BAT*/status; }
+      isCharging || echo -n 120 > /sys/class/backlight/intel_backlight/brightness
+    '';
   };
 
   services.xserver = {
