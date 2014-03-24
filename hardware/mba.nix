@@ -7,7 +7,7 @@
   
   boot.initrd.kernelModules = [ "dm_crypt" "fbcon" "aesni_intel" "hid_apple" ];
   boot.initrd.availableKernelModules = [ "xhci_hcd" "ehci_pci" "ahci" ];
-  boot.kernelModules = [ "kvm_intel" ];
+  boot.kernelModules = [ "kvm_intel" "fuse" ];
   boot.extraModulePackages = [ ];
 
   boot.initrd.luks.devices = [

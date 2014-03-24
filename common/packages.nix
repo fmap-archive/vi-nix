@@ -9,7 +9,7 @@ let
 in {
   environment.systemPackages = with pkgs; [
     #amphetype
-    #mnemosyne
+    mnemosyne
     acpi
     acpid
     spotify
@@ -49,6 +49,7 @@ in {
     tmux
     unzip
     vim
+    linuxPackages.virtualbox
     wget
     wireshark
     wpa_supplicant
@@ -75,8 +76,9 @@ in {
   ];
  nixpkgs.config = {
    packageOverrides = pkgs: {
-      surf    = pkgs.callPackage ./packages/surf {};
-      mutt    = pkgs.callPackage ./packages/mutt {};
+      surf      = pkgs.callPackage ./packages/surf {};
+      mutt      = pkgs.callPackage ./packages/mutt {};
+      mnemosyne = pkgs.callPackage ./packages/mnemosyne {};
       zathura = recurseIntoAttrs
         (let 
           callPackage = newScope pkgs.zathuraCollection;
