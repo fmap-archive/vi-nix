@@ -1,8 +1,14 @@
-{stdenv, fetchurl, pythonPackages}:
+{ stdenv
+, fetchurl
+, buildPythonPackage
+, pyqt4
+, matplotlib
+, cherrypy
+, sqlite3
+}:
 let 
   version = "2.2.1";
-  inherit (pythonPackages) pyqt4 matplotlib cherrypy sqlite3;
-in pythonPackages.buildPythonPackage rec {
+in buildPythonPackage rec {
   name = "mnemosyne-${version}";
   src = fetchurl {
     url    = "http://sourceforge.net/projects/mnemosyne-proj/files/mnemosyne/${name}/Mnemosyne-${version}.tar.gz";
@@ -16,7 +22,7 @@ in pythonPackages.buildPythonPackage rec {
   ];
   preConfigure = ''
     substituteInPlace setup.py --replace /usr $out
-    find . -type f -exec grep -H sys.exec_prefix {} ';' | cut -d: -f1 | xargs sed -i s,sys.exec_prefix,\"$out\",
+    find . -type f -exec grep -l sys.exec_prefix {} ';' | xargs sed -i s,sys.exec_prefix,\"$out\",
   '';
   installCommand = "python setup.py install --prefix=$out";
   meta = {

@@ -78,7 +78,9 @@ in {
    packageOverrides = pkgs: {
       surf      = pkgs.callPackage ./packages/surf {};
       mutt      = pkgs.callPackage ./packages/mutt {};
-      mnemosyne = pkgs.callPackage ./packages/mnemosyne {};
+      mnemosyne = pkgs.callPackage ./packages/mnemosyne {
+        inherit (pkgs.pythonPackages) matplotlib cherrypy sqlite3;
+      };
       zathura = recurseIntoAttrs
         (let 
           callPackage = newScope pkgs.zathuraCollection;
