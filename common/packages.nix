@@ -22,7 +22,6 @@ in {
     xorg.xwininfo
     xlibs.xev
     cacert
-    chromium
     feh
     file
     gcc
@@ -53,6 +52,8 @@ in {
     wireshark
     wpa_supplicant
     xclip
+    postgresql
+    gimp
     xlaunch
     xlibs.xinit
     zathura
@@ -68,6 +69,7 @@ in {
       self.xmonadContrib
       self.xmonadExtras
       self.pandoc
+      self.cabal2nix
       # ...
       self.lens
       self.hmatrix
