@@ -12,7 +12,7 @@
     createHome = true;
     createUser = true;
     description = "vi";
-    extraGroups = ["wheel"];
+    extraGroups = ["wheel" "vboxusers" ];
     group = "users";
     home = "/home/vi";
     hashedPassword = "$6$jsl6DJ3J$p/45DOLzK5frmUNKonpcsWx5f.cQuz6Su6wjBftoQnM7DHzdTo/6Lh0OaV1E7Jn4dp4OrzaepjACz/zZqbCIP0";

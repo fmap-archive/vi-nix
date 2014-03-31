@@ -9,6 +9,7 @@
       ./common/locale.nix
       ./common/security.nix
       ./common/network.nix
+      <nixos/modules/programs/virtualbox.nix>
     ];
 
   boot.loader.grub.enable = false;

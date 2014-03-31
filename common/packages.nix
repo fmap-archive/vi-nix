@@ -49,7 +49,6 @@ in {
     tmux
     unzip
     vim
-    linuxPackages.virtualbox
     wget
     wireshark
     wpa_supplicant
