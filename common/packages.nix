@@ -9,10 +9,10 @@ let
 in {
   environment.systemPackages = with pkgs; [
     #amphetype
+    inetutils
     mnemosyne
     acpi
     acpid
-    spotify
     psmisc
     xlibs.xkbcomp
     unclutter
