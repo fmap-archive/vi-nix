@@ -22,7 +22,7 @@ stdenv.mkDerivation rec {
   name = "mutt-${version}";
   
   src = fetchurl {
-    url = "ftp://ftp.mutt.org/mutt/devel/${name}.tar.gz";
+    url    = "https://bitbucket.org/mutt/mutt/downloads/mutt-${version}.tar.gz";
     sha256 = "19zk81spnb0gc8y5mwmcfn33g77wv1xz5bmgic8aan07xn8fislg";
   };
 
