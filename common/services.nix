@@ -7,14 +7,9 @@
   services.acpid = {
     enable = true;
     lidEventCommands = ''
-      lidClosed()  { grep -q closed /proc/acpi/button/lid/LID*/state; };
-      isCharging() { grep -qiP '(?<!dis)charging' /sys/class/power_supply/BAT*/status; }
-      sleep 2; if `lidClosed`; then isCharging || poweroff; fi
-    '';
-    acEventCommands = ''
-      isCharging()    { grep -qiP '(?<!dis)charging' /sys/class/power_supply/BAT*/status; }
-      setBrightness() { echo -n $1 > /sys/class/backlight/intel_backlight/brightness; }
-      sleep 2; isCharging && setBrightness 200 || setBrightness 120
+      lidClosed()     { grep -q closed /proc/acpi/button/lid/LID*/state; };
+      isDischarging() { grep -qi 'discharging' /sys/class/power_supply/BAT*/status; }
+      sleep 2; if `lidClosed`; then isDischarging && poweroff; fi
     '';
   };
 
