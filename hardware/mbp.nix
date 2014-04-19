@@ -5,10 +5,11 @@
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
 
-  boot.initrd.kernelModules = [ "dm_crypt" "fbcon" "aesni_intel" "hid_apple" ];
+  boot.initrd.kernelModules = [ "dm_crypt" "fbcon" "aesni_intel" "hid_apple" "wl" ];
   boot.initrd.availableKernelModules = [ "xhci_hcd" "ehci_pci" "ahci" ];
+  boot.blacklistedKernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "fuse" ];
-  boot.extraModulePackages = [ ];
+  boot.extraModulePackages = [ pkgs.linuxPackages.broadcom_sta ];
 
   boot.initrd.luks.devices = [
     { name = "graveyard"; device = "/dev/sda4"; preLVM = true; }
