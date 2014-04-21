@@ -1,4 +1,4 @@
-{stdenv, fetchurl, makeWrapper, gtk, webkit_gtk2, wget, gnome3, pkgconfig, glib, glib_networking, libsoup, gsettings_desktop_schemas, patches ? null}:
+{stdenv, fetchurl, makeWrapper, gtk, webkit, wget, gnome3, pkgconfig, glib, glib_networking, libsoup, gsettings_desktop_schemas, patches ? null}:
 
 stdenv.mkDerivation rec {
   name = "surf-${version}";
@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
 
   src = /home/vi/root/code/surf-vi;
 
-  buildInputs = [ gtk makeWrapper webkit_gtk2 pkgconfig glib libsoup wget gnome3.zenity ];
+  buildInputs = [ gtk makeWrapper webkit gsettings_desktop_schemas pkgconfig glib libsoup wget gnome3.zenity ];
 
   buildPhase = " make ";
 
@@ -17,11 +17,12 @@ stdenv.mkDerivation rec {
   ''];
   installPhase = ''
     make PREFIX=/ DESTDIR=$out install
+  '';
+  preFixup = ''
     wrapProgram "$out/bin/surf" \
       --prefix GIO_EXTRA_MODULES : ${glib_networking}/lib/gio/modules \
-      --prefix XDG_DATA_DIRS : "${gsettings_desktop_schemas}/share"
+      --prefix XDG_DATA_DIRS : "$GSETTINGS_SCHEMAS_PATH"
   '';
-
   meta = {
     description = "Simple web browser";
     longDescription = ''

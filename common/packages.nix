@@ -77,7 +77,9 @@ in {
   ];
  nixpkgs.config = {
    packageOverrides = pkgs: {
-      surf      = pkgs.callPackage ./packages/surf {};
+      surf      = pkgs.callPackage ./packages/surf {
+        webkit = pkgs.webkitgtk2;
+      };
       mutt      = pkgs.callPackage ./packages/mutt {};
       zathura = recurseIntoAttrs
         (let 
