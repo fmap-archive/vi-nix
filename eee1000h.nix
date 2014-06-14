@@ -9,6 +9,7 @@
     ./common/locale.nix
     ./common/security.nix
     ./common/network.nix
+    ./common/nix.nix
   ];
 
   boot.loader.grub.enable = true;
