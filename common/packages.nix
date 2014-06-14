@@ -8,7 +8,10 @@ let
   });
 in {
   environment.systemPackages = with pkgs; [
-    #amphetype
+    bc
+    coreutils
+    gnused
+    xorg.xkill
     inetutils
     mnemosyne
     acpi
@@ -24,7 +27,6 @@ in {
     cacert
     feh
     file
-    gcc
     git
     gnumake
     gnupg
@@ -41,7 +43,6 @@ in {
     rsync
     rxvt_unicode
     scrot
-    skype
     slock
     sshfsFuse
     surf
@@ -49,22 +50,18 @@ in {
     unzip
     vim
     wget
-    wireshark
     wpa_supplicant
     xclip
     postgresql
-    gimp
-    xlaunch
     xlibs.xinit
     zathura
     gnome.zenity
     zip
     zlib
     ruby
-    calibre
     bundler
     (haskellPackages.ghcWithPackages (self : [
-      self.cabalInstall
+      self.cabalInstall_1_18_0_3
       self.xmonad
       self.xmonadContrib
       self.xmonadExtras
