@@ -20,11 +20,12 @@
   networking.hostName = "euclid"; 
   networking.wireless.enable = true;
 
-  services.xserver.multitouch = {
-    enable       = true;
-    invertScroll = true;
-    ignorePalm   = true;
+  services.xserver = {
+    multitouch = {
+      enable       = true;
+      invertScroll = true;
+      ignorePalm   = true;
+    };
+    videoDrivers = [ "intel" ];
   };
-  
-  hardware.opengl.videoDrivers = [ "intel" ];
 }
