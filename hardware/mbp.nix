@@ -43,7 +43,7 @@
     };
 
   swapDevices =
-    [ { device = "/dev/dm-2"; }
+    [ 
     ];
 
   nix.maxJobs = 4;
