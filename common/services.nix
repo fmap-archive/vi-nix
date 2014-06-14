@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  services.openssh.enable = false;
+  services.openssh = {
+    enable = true;
+    passwordAuthentication = false;
+  };
   services.printing.enable = false;
 
   services.acpid = {
