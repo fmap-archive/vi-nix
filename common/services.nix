@@ -25,6 +25,11 @@
     desktopManager.default = "none";
     displayManager.slim.defaultUser = "vi";
   };
+
+  system.activationScripts.ssl =
+    ''
+      ln -s /etc/ssl/certs/ca-bundle.crt /etc/ssl/certs/ca-certificates.crt 
+    '';
   
   systemd.services."display-manager".preStart = ''
     chmod a+w $(realpath /sys/class/backlight/intel_backlight/brightness)
