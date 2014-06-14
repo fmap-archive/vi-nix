@@ -1,10 +1,14 @@
-{stdenv, fetchurl, makeWrapper, gtk, webkit, wget, gnome3, pkgconfig, glib, glib_networking, libsoup, gsettings_desktop_schemas, patches ? null}:
+{stdenv, fetchurl, makeWrapper, gtk, webkit, wget, gnome3, pkgconfig, glib, glib_networking, libsoup, gsettings_desktop_schemas, fetchgit, patches ? null}:
 
 stdenv.mkDerivation rec {
   name = "surf-${version}";
   version="0.6";
 
-  src = /home/vi/root/code/surf-vi;
+  src = fetchgit {
+    url = https://github.com/fmap/surf-vi;
+    rev = "724a391dee3bf3df5172ef7d3cb2bc0c205670f5";
+    sha256 = "3fd42772d2d886b5ccc7f6b5a18c6d6e9bc4c856400d768e98a026460f80dcf7";
+  };
 
   buildInputs = [ gtk makeWrapper webkit gsettings_desktop_schemas pkgconfig glib libsoup wget gnome3.zenity ];
 
