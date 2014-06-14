@@ -47,6 +47,7 @@ in {
     slock
     sshfsFuse
     surf
+    tree
     tmux
     unzip
     vim
