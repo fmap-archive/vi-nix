@@ -26,6 +26,7 @@ in {
     xlibs.xev
     cacert
     feh
+    ffmpeg
     file
     git
     gnumake
