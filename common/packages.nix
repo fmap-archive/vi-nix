@@ -68,7 +68,7 @@ in {
       self.xmonadExtras
       self.pandoc
       self.cabal2nix
-      # ...
+      self.interpolate
       self.lens
       self.hmatrix
     ]))
