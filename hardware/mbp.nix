@@ -6,6 +6,7 @@
     ];
 
   boot.kernelPackages = pkgs.linuxPackages_3_14;
+  boot.initrd.kernelModules = [ "dm_crypt" "fbcon" "aesni_intel" "hid_apple" "wl" "kvm-intel" "fuse" ];
   boot.initrd.availableKernelModules = [ "xhci_hcd" "ehci_pci" "ahci" ];
   boot.blacklistedKernelModules = [ ];
   boot.extraModulePackages = [
