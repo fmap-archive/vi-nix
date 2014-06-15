@@ -73,6 +73,10 @@ in {
       self.lens
       self.hmatrix
     ]))
+    perlPackages.CryptBlowfish
+    perlPackages.CryptDH
+    perlPackages.CryptOpenSSLBignum
+    perlPackages.MathBigInt
   ];
  nixpkgs.config = {
    packageOverrides = pkgs: {
