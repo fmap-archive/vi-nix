@@ -8,60 +8,62 @@ let
   });
 in {
   environment.systemPackages = with pkgs; [
-    bc
-    coreutils
-    gnused
-    xorg.xkill
-    inetutils
-    mnemosyne
     acpi
     acpid
-    psmisc
-    xlibs.xkbcomp
-    unclutter
+    bc
     bind
-    dzen2
-    python27Packages.mutagen
-    xorg.xwininfo
-    xlibs.xev
+    binutils
+    bundler
     cacert
+    coreutils
+    dzen2
     feh
     ffmpeg
     file
     git
+    gnome.zenity
     gnumake
     gnupg
+    gnused
     htop
+    inetutils
     irssi
+    nix-prefetch-scripts
+    mercurial
+    mnemosyne
     mplayer
     msmtp
     mutt
     offlineimap
     pinentry
     pkgconfig
+    postgresql
+    psmisc
+    python27Packages.mutagen
     redshift
-    mercurial
     rsync
+    ruby
     rxvt_unicode
     scrot
     slock
     sshfsFuse
     surf
-    tree
     tmux
+    tree
+    unclutter
     unzip
     vim
     wget
     wpa_supplicant
     xclip
-    postgresql
+    xlibs.xev
     xlibs.xinit
+    xlibs.xkbcomp
+    xorg.xkill
+    xorg.xwininfo
     zathura
-    gnome.zenity
     zip
     zlib
-    ruby
-    bundler
     (haskellPackages.ghcWithPackages (self : [
       self.cabalInstall_1_18_0_3
       self.xmonad
