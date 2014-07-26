@@ -41,4 +41,21 @@
     [ "*/5 * * * * vi /home/vi/bin/cron/courier" 
       "*/5 * * * * vi /home/vi/bin/cron/dwarf"
     ];
+
+  services.bind.enable = true;
+
+  services.tor.client.enable = true;
+
+  # Tor configuration. With the property unset, the file reads:
+  #
+  #    DataDirectory /var/lib/tor
+  #    User tor
+  #    SOCKSPort 127.0.0.1:9050 IsolateDestAddr
+  #    SOCKSPort 127.0.0.1:9063
+
+  services.tor.config = ''
+    AutomapHostsOnResolve 1
+    TransPort 9040
+    DNSPort 53
+  '';
 }
