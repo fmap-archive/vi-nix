@@ -1,0 +1,156 @@
+diff --git a/compose.c b/compose.c
+index 9cfa2d4..55123c4 100644
+--- a/compose.c
++++ b/compose.c
+@@ -1267,11 +1267,14 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
+     /* Draw formatted compose status line */
+     if (menu->redraw & REDRAW_STATUS) 
+     {
++      if (option(OPTSTATUSBAR))
++      {
+ 	compose_status_line (buf, sizeof (buf), 0, menu, NONULL(ComposeFormat));
+ 	move(option (OPTSTATUSONTOP) ? 0 : LINES-2, 0);
+ 	SETCOLOR (MT_COLOR_STATUS);
+ 	mutt_paddstr (COLS, buf);
+ 	NORMAL_COLOR;
++      }
+ 	menu->redraw &= ~REDRAW_STATUS;
+     }
+   }
+diff --git a/curs_main.c b/curs_main.c
+index 8553102..5545307 100644
+--- a/curs_main.c
++++ b/curs_main.c
+@@ -512,7 +512,7 @@ int mutt_index_menu (void)
+ 
+   menu = mutt_new_menu (MENU_MAIN);
+   menu->offset = 1;
+-  menu->pagelen = LINES - 3;
++  menu->pagelen = LINES - (option(OPTSTATUSBAR) ? 3 : 2);
+   menu->make_entry = index_make_entry;
+   menu->color = index_color;
+   menu->current = ci_first_message ();
+@@ -631,12 +631,14 @@ int mutt_index_menu (void)
+ 
+       if (menu->redraw & REDRAW_STATUS)
+       {
++      if (option(OPTSTATUSBAR)) {
+ 	menu_status_line (buf, sizeof (buf), menu, NONULL (Status));
+ 	move (option (OPTSTATUSONTOP) ? 0 : LINES-2, 0);
+ 	SETCOLOR (MT_COLOR_STATUS);
+ 	mutt_paddstr (COLS, buf);
+ 	NORMAL_COLOR;
+ 	menu->redraw &= ~REDRAW_STATUS;
++	}
+ 	if (option(OPTTSENABLED) && TSSupported)
+ 	{
+ 	  menu_status_line (buf, sizeof (buf), menu, NONULL (TSStatusFormat));
+diff --git a/init.h b/init.h
+index 8265551..79fdf97 100644
+--- a/init.h
++++ b/init.h
+@@ -957,6 +957,12 @@ struct option_t MuttVars[] = {
+   ** running.  Since this variable is primarily aimed at new users, neither
+   ** of these should present a major problem.
+   */
++  { "status", DT_BOOL, R_BOTH, OPTSTATUSBAR, 1 },
++  /*
++  ** .pp
++  ** When \fIset\fP, mutt will show a statusbar filled with $$status_format.
++  ** $$status_on_top will still affect the ``help'' bar when set.
++  */
+   { "hidden_host",	DT_BOOL, R_NONE, OPTHIDDENHOST, 0 },
+   /*
+   ** .pp
+diff --git a/menu.c b/menu.c
+index e03dd33..402e7aa 100644
+--- a/menu.c
++++ b/menu.c
+@@ -207,12 +207,12 @@ void menu_redraw_full (MUTTMENU *menu)
+     mutt_paddstr (COLS, menu->help);
+     NORMAL_COLOR;
+     menu->offset = 1;
+-    menu->pagelen = LINES - 3;
++    menu->pagelen = LINES - (option(OPTSTATUSBAR) ? 3 : 2);
+   }
+   else
+   {
+     menu->offset = option (OPTSTATUSONTOP) ? 1 : 0;
+-    menu->pagelen = LINES - 2;
++    menu->pagelen = LINES - (option(OPTSTATUSBAR) ? 2 : 1);
+   }
+ 
+   mutt_show_error ();
+diff --git a/mutt.h b/mutt.h
+index 9dc123a..57ff22f 100644
+--- a/mutt.h
++++ b/mutt.h
+@@ -351,6 +351,7 @@ enum
+   OPTHDRS,
+   OPTHEADER,
+   OPTHELP,
++  OPTSTATUSBAR,
+   OPTHIDDENHOST,
+   OPTHIDELIMITED,
+   OPTHIDEMISSING,
+diff --git a/pager.c b/pager.c
+index 4f7e7be..2f0270b 100644
+--- a/pager.c
++++ b/pager.c
+@@ -1653,7 +1653,7 @@ mutt_pager (const char *banner, const char *fname, int flags, pager_t *extra)
+       {
+ 	indexoffset = 0;
+ 	statusoffset = IsHeader (extra) ? indexlen : 0;
+-	bodyoffset = statusoffset + 1;
++	bodyoffset = statusoffset + (option (OPTSTATUSBAR) ? 1 : 0);
+ 	helpoffset = LINES - 2;
+ 	bodylen = helpoffset - bodyoffset;
+ 	if (!option (OPTHELP))
+@@ -1663,7 +1663,7 @@ mutt_pager (const char *banner, const char *fname, int flags, pager_t *extra)
+       {
+ 	helpoffset = 0;
+ 	indexoffset = 1;
+-	statusoffset = LINES - 2;
++	statusoffset = LINES - (option (OPTSTATUSBAR) ? 2 : 1);
+ 	if (!option (OPTHELP))
+ 	  indexoffset = 0;
+ 	bodyoffset = indexoffset + (IsHeader (extra) ? indexlen : 0);
+@@ -1712,6 +1712,12 @@ mutt_pager (const char *banner, const char *fname, int flags, pager_t *extra)
+ 	index->offset  = indexoffset + (option (OPTSTATUSONTOP) ? 1 : 0);
+ 
+ 	index->pagelen = indexlen - 1;
++  if (!option (OPTSTATUSBAR))
++  {
++    if (option (OPTSTATUSONTOP))
++      index->offset--;
++    index->pagelen++;
++  }
+ 
+ 	/* some fudge to work out where abouts the indicator should go */
+ 	if (index->current - indicator < 0)
+@@ -1780,7 +1786,7 @@ mutt_pager (const char *banner, const char *fname, int flags, pager_t *extra)
+       redraw |= REDRAW_STATUS; /* need to update the % seen */
+     }
+ 
+-    if (redraw & REDRAW_STATUS)
++    if (redraw & REDRAW_STATUS && option(OPTSTATUSBAR))
+     {
+       struct hdr_format_info hfi;
+       char pager_progress_str[4];
+@@ -1827,6 +1833,8 @@ mutt_pager (const char *banner, const char *fname, int flags, pager_t *extra)
+        * flags for this message might have changed. */
+       menu_redraw_current (index);
+ 
++      if (option(OPTSTATUSBAR))
++      {
+       /* print out the index status bar */
+       menu_status_line (buffer, sizeof (buffer), index, NONULL(Status));
+  
+@@ -1834,6 +1842,7 @@ mutt_pager (const char *banner, const char *fname, int flags, pager_t *extra)
+       SETCOLOR (MT_COLOR_STATUS);
+       mutt_paddstr (COLS, buffer);
+       NORMAL_COLOR;
++      }
+     }
+ 
+     redraw = 0;

@@ -59,7 +59,9 @@ stdenv.mkDerivation rec {
     (if gpgmeSupport then "--enable-gpgme" else "--disable-gpgme")
   ];
 
-  patches = [];
+  patches = [
+    ./mutt-1.5.22-hidestatus.patch
+  ];
 
   meta = with stdenv.lib; {
     description = "A small but very powerful text-based mail client";
