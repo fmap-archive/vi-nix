@@ -1,4 +1,6 @@
-{ stdenv, fetchurl, ncurses, which, perl
+{ stdenv, fetchhg, ncurses, which, perl
+, autoconf
+, automake
 , sslSupport ? true
 , imapSupport ? true
 , headerCache ? true
@@ -21,18 +23,22 @@ in
 stdenv.mkDerivation rec {
   name = "mutt-${version}";
   
-  src = fetchurl {
-    url    = "https://bitbucket.org/mutt/mutt/downloads/mutt-${version}.tar.gz";
-    sha256 = "19zk81spnb0gc8y5mwmcfn33g77wv1xz5bmgic8aan07xn8fislg";
+  src = fetchhg {
+    url    = "https://bitbucket.org/mutt/mutt";
+    rev    = "8f62001";
   };
 
   buildInputs = [
-    ncurses which perl
+    ncurses which perl autoconf automake
     (if headerCache then gdbm else null)
     (if sslSupport then openssl else null)
     (if saslSupport then cyrus_sasl else null)
     (if gpgmeSupport then gpgme else null)
   ];
+
+  preConfigure = ''
+    autoreconf --install
+  '';
   
   configureFlags = [
     "--with-mailpath=" "--enable-smtp"
@@ -53,16 +59,14 @@ stdenv.mkDerivation rec {
     (if gpgmeSupport then "--enable-gpgme" else "--disable-gpgme")
   ];
 
-  patches = [
-    ./mutt-1.5.22-xtitles.patch
-  ];
+  patches = [];
 
   meta = with stdenv.lib; {
     description = "A small but very powerful text-based mail client";
     homepage = http://www.mutt.org;
     license = "GPLv2+";
     platforms = platforms.unix;
-    maintainers = with maintainers; [ the-kenny ];
+    maintainers = [];
   };
 }
 
