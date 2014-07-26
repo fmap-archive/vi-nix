@@ -21,12 +21,15 @@ in {
     ffmpeg
     file
     git
+    gitAndTools.hub
     gnome.zenity
     gnumake
     gnupg
     gnused
     htop
     inetutils
+    imagemagick
+    calibre
     irssi
     nix-prefetch-scripts
     mercurial
@@ -35,6 +38,7 @@ in {
     msmtp
     mutt
     offlineimap
+    pdftk
     pinentry
     pkgconfig
     postgresql
@@ -61,11 +65,13 @@ in {
     xlibs.xkbcomp
     xorg.xkill
     xorg.xwininfo
+    youtubeDL
+    texLiveFull
     zathura
     zip
     zlib
     (haskellPackages.ghcWithPackages (self : [
-      self.cabalInstall_1_18_0_3
+      self.cabalInstall
       self.xmonad
       self.xmonadContrib
       self.xmonadExtras
@@ -74,11 +80,15 @@ in {
       self.interpolate
       self.lens
       self.hmatrix
+      self.unixCompat
+      self.persistentMysql
     ]))
+    haskellPackages.idris
     perlPackages.CryptBlowfish
     perlPackages.CryptDH
     perlPackages.CryptOpenSSLBignum
     perlPackages.MathBigInt
+    s3cmd_15_pre_81e3842f7a
   ];
  nixpkgs.config = {
    packageOverrides = pkgs: {
