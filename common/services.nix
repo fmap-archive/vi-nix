@@ -5,7 +5,8 @@
     enable = true;
     passwordAuthentication = false;
   };
-  services.printing.enable = false;
+
+  services.printing.enable = true;
 
   services.acpid = {
     enable = true;
