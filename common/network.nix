@@ -6,6 +6,8 @@
     192.168.56.101  bob.eris.zalora.sg
   ''; 
 
+  networking.enableIPv6 = false;
+
   networking.firewall.enable = true;
 
   # Use Tor as a transparent proxy.
