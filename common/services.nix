@@ -42,8 +42,6 @@
       "*/5 * * * * vi /home/vi/bin/cron/dwarf"
     ];
 
-  services.bind.enable = true;
-
   services.tor.client.enable = true;
 
   # Tor configuration. With the property unset, the file reads:
@@ -57,5 +55,7 @@
     AutomapHostsOnResolve 1
     TransPort 9040
     DNSPort 53
+    AutomapHostsOnResolve 1
+    AutomapHostsSuffixes .onion
   '';
 }
