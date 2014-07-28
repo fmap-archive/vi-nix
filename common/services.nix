@@ -29,7 +29,7 @@
 
   system.activationScripts.ssl =
     ''
-      ln -s /etc/ssl/certs/ca-bundle.crt /etc/ssl/certs/ca-certificates.crt 
+      ln -sf /etc/ssl/certs/ca-bundle.crt /etc/ssl/certs/ca-certificates.crt 
     '';
   
   systemd.services."display-manager".preStart = ''
