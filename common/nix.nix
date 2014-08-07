@@ -4,12 +4,10 @@
   nixpkgs.config.allowUnfree = true;
   
   nix.binaryCaches = 
-    [ "http://cache.nixos.org"
-      "http://hydra.nixos.org"
+    [ "https://hydra.nixos.org"
     ];
 
   nix.trustedBinaryCaches = 
-    [ "http://cache.nixos.org"
-      "http://hydra.nixos.org"
+    [ "https://hydra.nixos.org"
     ];
 }
