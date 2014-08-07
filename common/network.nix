@@ -25,4 +25,8 @@
     iptables -A OUTPUT -m owner --uid-owner ${toString config.ids.uids.tor} -j ACCEPT
     iptables -A OUTPUT -j REJECT
   '';
+
+  networking.dhcpcd.extraConfig = ''
+    nohook resolv.conf
+  '';
 }
