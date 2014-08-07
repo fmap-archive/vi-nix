@@ -52,10 +52,9 @@
   #    SOCKSPort 127.0.0.1:9063
 
   services.tor.config = ''
-    AutomapHostsOnResolve 1
     TransPort 9040
     DNSPort 53
     AutomapHostsOnResolve 1
-    AutomapHostsSuffixes .onion
+    AutomapHostsSuffixes .onion,.exit
   '';
 }
