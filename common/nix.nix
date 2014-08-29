@@ -13,12 +13,4 @@
    ];
   
   nix.distributedBuilds = true;
-  
-  nix.binaryCaches = 
-    [ "https://hydra.nixos.org"
-    ];
-
-  nix.trustedBinaryCaches = 
-    [ "https://hydra.nixos.org"
-    ];
 }
