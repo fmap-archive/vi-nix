@@ -15,7 +15,7 @@
     iptables -F
     iptables -t nat -F
     iptables -t nat -A OUTPUT -m owner --uid-owner ${toString config.ids.uids.tor} -j RETURN
-    iptables -A OUTPUT -p tcp -m string --string HTTP --algo kmp -j REJECT --reject-with tcp-reset
+    #iptables -A OUTPUT -p tcp -m string --string HTTP --algo kmp -j REJECT --reject-with tcp-reset
     iptables -t nat -A OUTPUT -p tcp --syn -j REDIRECT --to-ports 9040
     iptables -t nat -A OUTPUT -d 127.0.0.0/8 -j RETURN
     iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
