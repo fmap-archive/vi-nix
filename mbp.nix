@@ -20,6 +20,8 @@
   networking.hostName = "euclid"; 
   networking.wireless.enable = true;
 
+  i18n.consoleFont = "sun12x22";
+
   services.xserver = {
     multitouch = {
       enable       = true;
