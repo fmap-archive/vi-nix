@@ -70,20 +70,6 @@ in {
     zathura
     zip
     zlib
-    (haskellPackages.ghcWithPackages (self : [
-      self.cabalInstall
-      self.xmonad
-      self.xmonadContrib
-      self.xmonadExtras
-      self.pandoc
-      self.cabal2nix
-      self.interpolate
-      self.lens
-      self.hmatrix
-      self.unixCompat
-      self.persistentMysql
-    ]))
-    haskellPackages.idris
     perlPackages.CryptBlowfish
     perlPackages.CryptDH
     perlPackages.CryptOpenSSLBignum
