@@ -15,8 +15,10 @@ in {
     binutils
     bundler
     cacert
+    calibre
     coreutils
     dzen2
+    exif
     feh
     ffmpeg
     file
@@ -27,21 +29,23 @@ in {
     gnupg
     gnused
     htop
-    inetutils
     imagemagick
-    calibre
+    inetutils
     irssi
-    nix-prefetch-scripts
     mercurial
     mnemosyne
     mplayer
     msmtp
+    mysql
     mutt
+    nixops
+    nix-prefetch-scripts
     offlineimap
     pdftk
     pinentry
     pkgconfig
     postgresql
+    proxychains
     psmisc
     python27Packages.mutagen
     redshift
@@ -52,12 +56,15 @@ in {
     slock
     sshfsFuse
     surf
+    tcpdump
+    texLiveFull
     tmux
     tree
     unclutter
     unzip
     vim
     wget
+    wireshark
     wpa_supplicant
     xclip
     xlibs.xev
@@ -66,7 +73,6 @@ in {
     xorg.xkill
     xorg.xwininfo
     youtubeDL
-    texLiveFull
     zathura
     zip
     zlib
