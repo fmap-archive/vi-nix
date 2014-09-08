@@ -82,18 +82,32 @@ in {
     perlPackages.MathBigInt
     s3cmd_15_pre_81e3842f7a
   ];
- nixpkgs.config = {
-   packageOverrides = pkgs: {
-      surf      = pkgs.callPackage ./packages/surf {
-        webkit = pkgs.webkitgtk2;
+  nixpkgs.config.packageOverrides = pkgs : {
+    surf      = pkgs.callPackage ./packages/surf {
+      webkit = pkgs.webkitgtk2;
+    };
+    mutt = lib.overrideDerivation pkgs.mutt (default: {
+      name = "mutt-1.5.22";
+      src  = pkgs.fetchhg {
+        url = "https://bitbucket.org/mutt/mutt";
+        rev = "8f62001";
       };
-      mutt      = pkgs.callPackage ./packages/mutt {};
-      zathura = recurseIntoAttrs
-        (let 
-          callPackage = newScope pkgs.zathuraCollection;
-          fetchurl = pkgs.fetchurl;
-         in import packages/zathura { inherit callPackage pkgs fetchurl; }
-        ).zathuraWrapper;
-   };
+      buildInputs = with pkgs; [
+        autoconf
+        automake
+      ];
+      preConfigure = ''
+        autoreconf --install
+      '';
+      patches = [
+        ./packages/mutt-1.5.22-hidestatus.patch
+      ];
+    });
+    zathura = recurseIntoAttrs
+      (let 
+        callPackage = newScope pkgs.zathuraCollection;
+        fetchurl = pkgs.fetchurl;
+       in import packages/zathura { inherit callPackage pkgs fetchurl; }
+      ).zathuraWrapper;
  };
 }
