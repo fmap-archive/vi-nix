@@ -83,12 +83,20 @@ in {
     s3cmd_15_pre_81e3842f7a
   ];
   nixpkgs.config.packageOverrides = pkgs : {
-    surf      = pkgs.callPackage ./packages/surf {
-      webkit = pkgs.webkitgtk2;
-    };
+    surf = lib.overrideDerivation pkgs.surf (default : {
+      src = pkgs.fetchgit {
+        url = https://github.com/fmap/surf-vi;
+        rev = "724a391dee3bf3df5172ef7d3cb2bc0c205670f5";
+        sha256 = "3fd42772d2d886b5ccc7f6b5a18c6d6e9bc4c856400d768e98a026460f80dcf7";
+      };
+      buildInputs = with pkgs; [
+        wget 
+        gnome3.zenity
+      ];
+    });
     mutt = lib.overrideDerivation pkgs.mutt (default: {
       name = "mutt-1.5.22";
-      src  = pkgs.fetchhg {
+      src = pkgs.fetchhg {
         url = "https://bitbucket.org/mutt/mutt";
         rev = "8f62001";
       };
