@@ -2,14 +2,14 @@
 
 {
   require =
-    [ ./hardware/mba.nix
-      ./common/services.nix
-      ./common/users.nix
-      ./common/packages.nix
-      ./common/locale.nix
-      ./common/security.nix
-      ./common/network.nix
-      ./common/nix.nix
+    [ ../hardware/mba.nix
+      ../services.nix
+      ../users.nix
+      ../packages.nix
+      ../locale.nix
+      ../security.nix
+      ../network.nix
+      ../nix.nix
       <nixos/modules/programs/virtualbox.nix>
     ];
 
