@@ -2,15 +2,8 @@
 
 {
   require =
-    [ ../hardware/mba.nix
-      ../services.nix
-      ../users.nix
-      ../packages.nix
-      ../locale.nix
-      ../security.nix
-      ../network.nix
-      ../nix.nix
-      <nixos/modules/programs/virtualbox.nix>
+    [ ./machines.nix
+      ../hardware/mba.nix
     ];
 
   boot.loader.grub.enable = false;
