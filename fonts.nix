@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
 
 {
-  fonts.enableFontDir = true;
+  fonts.enableFontDir = !config.environment.isServer;
 }

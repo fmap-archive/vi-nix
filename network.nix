@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   networking.extraHosts = ''
@@ -11,7 +11,7 @@
   networking.firewall.enable = true;
 
   # Use Tor as a transparent proxy.
-  networking.firewall.extraCommands = ''
+  networking.firewall.extraCommands = lib.mkIf (!config.environment.isServer) ''
     iptables -F
     iptables -t nat -F
 
@@ -29,7 +29,7 @@
     iptables -A OUTPUT -j REJECT
   '';
 
-  networking.dhcpcd.extraConfig = ''
+  networking.dhcpcd.extraConfig = lib.mkIf (!config.environment.isServer) ''
     nohook resolv.conf
   '';
 }

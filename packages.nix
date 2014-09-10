@@ -15,16 +15,12 @@ in {
     binutils
     bundler
     cacert
-    calibre
     coreutils
-    dzen2
     exif
-    feh
     ffmpeg
     file
     git
     gitAndTools.hub
-    gnome.zenity
     gnumake
     gnupg
     gnused
@@ -33,28 +29,20 @@ in {
     inetutils
     irssi
     mercurial
-    mnemosyne
     mplayer
     msmtp
     mysql
     mutt
     nixops
     nix-prefetch-scripts
-    offlineimap
     pdftk
-    pinentry
     pkgconfig
     postgresql
     proxychains
     psmisc
     python27Packages.mutagen
-    redshift
     rsync
     ruby
-    rxvt_unicode
-    scrot
-    slock
-    surf
     tcpdump
     texLiveFull
     tmux
@@ -64,6 +52,26 @@ in {
     vim
     wget
     wireshark
+    youtubeDL
+    zip
+    zlib
+    perlPackages.CryptBlowfish
+    perlPackages.CryptDH
+    perlPackages.CryptOpenSSLBignum
+    perlPackages.MathBigInt
+  ] ++ (if ! config.environment.isServer then [
+    calibre
+    dzen2
+    feh
+    gnome.zenity
+    mnemosyne
+    offlineimap
+    pinentry
+    redshift
+    rxvt_unicode
+    scrot
+    slock
+    surf
     wpa_supplicant
     xclip
     xlibs.xev
@@ -71,15 +79,9 @@ in {
     xlibs.xkbcomp
     xorg.xkill
     xorg.xwininfo
-    youtubeDL
     zathura
-    zip
-    zlib
-    perlPackages.CryptBlowfish
-    perlPackages.CryptDH
-    perlPackages.CryptOpenSSLBignum
-    perlPackages.MathBigInt
-  ];
+  ] else []);
+
   nixpkgs.config.packageOverrides = pkgs : {
     surf = lib.overrideDerivation pkgs.surf (default : {
       src = pkgs.fetchgit {

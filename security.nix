@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
-  security.setuidPrograms = [
+  security.setuidPrograms = lib.mkIf (!config.environment.isServer) [
     "xlaunch"
     "slock"
     "pinentry"
