@@ -42,20 +42,4 @@
     [ "*/5 * * * * vi /home/vi/bin/cron/courier" 
       "*/5 * * * * vi /home/vi/bin/cron/dwarf"
     ];
-
-  services.tor.client.enable = !config.environment.isServer;
-
-  # Tor configuration. With the property unset, the file reads:
-  #
-  #    DataDirectory /var/lib/tor
-  #    User tor
-  #    SOCKSPort 127.0.0.1:9050 IsolateDestAddr
-  #    SOCKSPort 127.0.0.1:9063
-
-  services.tor.config = ''
-    TransPort 9040
-    DNSPort 53
-    AutomapHostsOnResolve 1
-    AutomapHostsSuffixes .onion,.exit
-  '';
 }
