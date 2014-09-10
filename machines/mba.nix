@@ -19,4 +19,6 @@
     invertScroll = true;
     ignorePalm   = true;
   };
+
+  environment.isServer = false;
 }

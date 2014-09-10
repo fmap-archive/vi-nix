@@ -8,6 +8,7 @@
       ../security.nix
       ../network.nix
       ../nix.nix
+      ../modules/client-or-server.nix
       <nixos/modules/programs/virtualbox.nix>
     ];
 }

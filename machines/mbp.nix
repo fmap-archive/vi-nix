@@ -23,4 +23,6 @@
     };
     videoDrivers = [ "intel" ];
   };
+
+  environment.isServer = false;
 }

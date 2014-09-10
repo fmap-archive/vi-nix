@@ -12,4 +12,6 @@
 
   networking.hostName = "birkhoff";
   networking.wireless.enable = false;
+
+  environment.isServer = false;
 }
