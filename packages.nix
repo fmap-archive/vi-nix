@@ -54,7 +54,6 @@ in {
     rxvt_unicode
     scrot
     slock
-    sshfsFuse
     surf
     tcpdump
     texLiveFull
@@ -80,7 +79,6 @@ in {
     perlPackages.CryptDH
     perlPackages.CryptOpenSSLBignum
     perlPackages.MathBigInt
-    s3cmd_15_pre_81e3842f7a
   ];
   nixpkgs.config.packageOverrides = pkgs : {
     surf = lib.overrideDerivation pkgs.surf (default : {
