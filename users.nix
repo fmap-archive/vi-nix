@@ -9,8 +9,7 @@
   };
 
   users.extraUsers.vi = {
-    createHome = true;
-    createUser = true;
+    isNormalUser = true;
     description = "vi";
     extraGroups = ["wheel" "vboxusers" ];
     group = "users";
