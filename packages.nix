@@ -3,9 +3,6 @@
 let 
   recurseIntoAttrs = attrs: attrs // { recurseIntoDerivations = true; };  
   newScope = extra: lib.callPackageWith (pkgs // extra);
-  bundler = lib.overrideDerivation pkgs.rubyLibs.bundler (_: {
-    dontPatchShebangs = 1;
-  });
 in {
   environment.systemPackages = with pkgs; [
     acpi
@@ -13,7 +10,6 @@ in {
     bc
     bind
     binutils
-    bundler
     cacert
     coreutils
     exif
@@ -42,7 +38,6 @@ in {
     psmisc
     python27Packages.mutagen
     rsync
-    ruby
     tcpdump
     texLiveFull
     tmux
