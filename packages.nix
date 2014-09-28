@@ -1,9 +1,6 @@
 { config, pkgs, lib, ... }:
 
-let 
-  recurseIntoAttrs = attrs: attrs // { recurseIntoDerivations = true; };  
-  newScope = extra: lib.callPackageWith (pkgs // extra);
-in {
+{
   environment.systemPackages = with pkgs; [
     acpi
     acpid
@@ -106,11 +103,11 @@ in {
         ./packages/mutt-1.5.22-hidestatus.patch
       ];
     });
-    zathura = recurseIntoAttrs
-      (let 
-        callPackage = newScope pkgs.zathuraCollection;
-        fetchurl = pkgs.fetchurl;
-       in import packages/zathura { inherit callPackage pkgs fetchurl; }
-      ).zathuraWrapper;
+    zathura = lib.overrideDerivation pkgs.zathura (default: {
+      src = pkgs.fetchurl {
+        url = "https://github.com/fmap/zathura-vi/releases/download/vi-0.2.8/zathura-0.2.7.tar.gz";
+        sha256 = "8cb6553f67c4e53e23f11a2d83c19bc41fcf0c15933d70e801c598c17480dbd2";
+      };
+    });
  };
 }
