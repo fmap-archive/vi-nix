@@ -13,5 +13,4 @@
       ../modules/bitlbee-signing.nix
       <nixos/modules/programs/virtualbox.nix>
     ];
-  nix.distributeBuildsToBitlbee = true;
 }

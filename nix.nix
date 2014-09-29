@@ -6,4 +6,6 @@
   nix.binaryCaches = [
     https://hydra.nixos.org
   ];
+
+  nix.distributeBuildsToBitlbee = true;
 }
