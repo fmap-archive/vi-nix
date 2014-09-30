@@ -5,7 +5,7 @@
 
   users.extraUsers.root = {
     hashedPassword = "$6$4CptotwIgzT58jB$CIhWW6FzHO1irNchO.KYaLBwKZLrknoMPzWVNjfJH9FQf0opTrJmzguV6lblT7z4dDPNrZoN07GpoZThzwY960";
-    # mkpasswd -m sha-512 
+    # mkpasswd -m sha-512
   };
 
   users.extraUsers.vi = {

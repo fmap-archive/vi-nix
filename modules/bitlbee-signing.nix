@@ -28,7 +28,7 @@ in {
       fi
     '';
 
-    nix.buildMachines = 
+    nix.buildMachines =
       [ { hostName = "bitlbee.ops.zalora.com";
           sshUser  = "vi";
           sshKey   = "/etc/nix/ssh-key";

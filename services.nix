@@ -17,7 +17,7 @@
     '';
   };
 
-  services.xserver = { 
+  services.xserver = {
     enable = !config.environment.isServer;
     exportConfiguration = true;
     xkbOptions = "ctrl:nocaps,compose:rwin";
@@ -29,9 +29,9 @@
 
   system.activationScripts.ssl =
     ''
-      ln -sf /etc/ssl/certs/ca-bundle.crt /etc/ssl/certs/ca-certificates.crt 
+      ln -sf /etc/ssl/certs/ca-bundle.crt /etc/ssl/certs/ca-certificates.crt
     '';
-  
+
   systemd.services."display-manager".preStart =
     ''
       chmod a+w $(realpath /sys/class/backlight/intel_backlight/brightness)
@@ -39,7 +39,7 @@
     '';
 
   services.cron.systemCronJobs = lib.mkIf (!config.environment.isServer)
-    [ "*/5 * * * * vi /home/vi/bin/cron/courier" 
+    [ "*/5 * * * * vi /home/vi/bin/cron/courier"
       "*/5 * * * * vi /home/vi/bin/cron/dwarf"
     ];
 }
