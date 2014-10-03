@@ -7,5 +7,5 @@
     https://hydra.nixos.org
   ];
 
-  #nix.distributeBuildsToBitlbee = true;
+  nix.distributeBuildsToBitlbee = false;
 }
