@@ -9,6 +9,7 @@
     binutils
     cacert
     coreutils
+    dos2unix
     exif
     ffmpeg
     file
@@ -28,6 +29,7 @@
     vi-mutt
     nixops
     nix-prefetch-scripts
+    nmap
     pdftk
     pkgconfig
     postgresql
@@ -35,6 +37,7 @@
     psmisc
     python27Packages.mutagen
     rsync
+    s3cmd_15_pre_81e3842f7a
     tcpdump
     texLiveFull
     tmux
