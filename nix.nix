@@ -7,5 +7,7 @@
     https://hydra.nixos.org
   ];
 
+  nix.trustedBinaryCaches = config.nix.binaryCaches;
+
   nix.distributeBuildsToBitlbee = false;
 }
