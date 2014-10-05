@@ -22,6 +22,7 @@
     imagemagick
     inetutils
     irssi
+    lsof
     mercurial
     mplayer
     msmtp
