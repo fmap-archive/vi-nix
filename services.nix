@@ -39,7 +39,7 @@
     '';
 
   services.cron.systemCronJobs = lib.mkIf (!config.environment.isServer)
-    [ "*/5 * * * * vi /home/vi/bin/cron/courier"
-      "*/5 * * * * vi /home/vi/bin/cron/dwarf"
+    [ "*/5 * * * * vi ${pkgs.vi-bin}/bin/cron/courier"
+      "*/5 * * * * vi ${pkgs.vi-bin}/bin/cron/dwarf"
     ];
 }
