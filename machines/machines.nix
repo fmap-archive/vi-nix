@@ -11,6 +11,7 @@
       ../modules/client-or-server.nix
       ../modules/tor-transparent.nix
       ../modules/bitlbee-signing.nix
+      ../modules/git-mirror.nix
       <nixos/modules/programs/virtualbox.nix>
     ];
 }
