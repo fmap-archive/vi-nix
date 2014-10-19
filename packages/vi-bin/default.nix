@@ -18,10 +18,10 @@ stdenv.mkDerivation rec {
     djvulibre
     dzen2
     gawk
-    #ghc.ghc783
+    ghc.ghc783
     gnutar
     gzip
-    #haskellPackages.pandoc
+    haskellPackages.pandoc
     imagemagick
     inetutils
     lsof
