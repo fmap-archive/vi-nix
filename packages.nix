@@ -4,7 +4,6 @@
     acpi
     acpid
     bc
-    vi-bin
     bind
     binutils
     cacert
@@ -83,6 +82,5 @@
     vi-surf    = pkgs.callPackage ./packages/vi-surf {};
     vi-mutt    = pkgs.callPackage ./packages/vi-mutt {};
     vi-zathura = pkgs.callPackage ./packages/vi-zathura {};
-    vi-bin     = pkgs.callPackage ./packages/vi-bin {};
   };
 }
