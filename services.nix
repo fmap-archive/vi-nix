@@ -44,17 +44,14 @@
     ];
 
   services.git-mirror.remotes = [
-    { repo = "git@github.com:fmap/vi-etc.git"; name = "vi-etc"; key = "/root/.ssh/github.vi-etc.id_rsa"; }
-    { repo = "git@github.com:fmap/vi-bin.git"; name = "vi-bin"; key = "/root/.ssh/github.vi-bin.id_rsa"; }
+    { repo = "git@github.com:fmap/vi-etc.git"; name = "vi-etc"; key = "/etc/keys/github.vi-etc.id_rsa"; }
+    { repo = "git@github.com:fmap/vi-bin.git"; name = "vi-bin"; key = "/etc/keys/github.vi-bin.id_rsa"; }
   ];
 
-  # XXX: implement more general secret relocation
-  system.activationScripts.installMirrorKeys = ''
-    mkdir -p /root/.ssh
-    cp ${<secrets>}/github*id* /root/.ssh
-    chown root:root /root/.ssh/github*id* # XXX: Too brittle.
-    chmod 0 /root/.ssh/github*id*
-  '';
+  services.secrets = [
+    { key = "github.vi-bin.id_rsa"; user = "root"; group = "root"; chmod = "0"; }
+    { key = "github.vi-etc.id_rsa"; user = "root"; group = "root"; chmod = "0"; }
+  ];
 
   services.mysql.enable = true;
   services.mysql.package = pkgs.mysql;

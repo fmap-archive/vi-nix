@@ -11,21 +11,22 @@ in {
   };
 
   config = mkIf distributingBuildsToBitlbee {
-    system.activationScripts.installBitlbeeSigningKey = ''
+    services.secrets = [
+      { key = "signing-key.sec"; user = "root"; group = "root"; chmod = "0"; }
+      { key = "bitlbee.id_rsa";  user = "root"; group = "root"; chmod = "0"; }
+    ];
+
+    system.activationScripts.installBitlbeeSigningKey = stringAfter ["secrets"] ''
       if [[ ! -f /etc/nix/signing-key.sec || ! -f /etc/nix/signing-key.pub ]]; then
-        cp "${<secrets/signing-key.sec>}" /etc/nix/signing-key.sec
+        ln -sf /etc/keys/signing-key.sec /etc/nix/signing-key.sec
         ${pkgs.openssl}/bin/openssl rsa -in /etc/nix/signing-key.sec -pubout > /etc/nix/signing-key.pub
-        chown root:root /etc/nix/ssh-key
-        chmod 0 /etc/nix/signing-key.*
+        chown root:root /etc/nix/signing-key.pub
+        chmod 0 /etc/nix/signing-key.pub
       fi
     '';
 
     system.activationScripts.installBitlbeeSSHKey = ''
-      if [[ ! -f /etc/nix/ssh-key ]]; then
-        cp "${<secrets/bitlbee.id_rsa>}" /etc/nix/ssh-key
-        chown root:root /etc/nix/ssh-key
-        chmod 0 /etc/nix/ssh-key
-      fi
+      ln -sf /etc/keys/bitlbee.id_rsa /etc/nix/ssh-key
     '';
 
     nix.buildMachines =
