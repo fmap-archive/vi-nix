@@ -29,6 +29,7 @@
     vi-mutt
     nixops
     nix-prefetch-scripts
+    nix-repl
     nmap
     pdftk
     pkgconfig
