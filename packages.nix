@@ -46,6 +46,7 @@
     unclutter
     unzip
     vim
+    w3m
     wget
     wireshark
     youtubeDL
