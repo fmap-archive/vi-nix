@@ -55,4 +55,7 @@
     chown root:root /root/.ssh/github*id* # XXX: Too brittle.
     chmod 0 /root/.ssh/github*id*
   '';
+
+  services.mysql.enable = true;
+  services.mysql.package = pkgs.mysql;
 }
