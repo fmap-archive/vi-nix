@@ -7,6 +7,6 @@
     supportedLocales = ["en_US.UTF-8"];
   };
   time = {
-    timeZone = "Asia/Singapore";
+    timeZone = "UTC";
   };
 }
