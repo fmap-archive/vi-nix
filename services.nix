@@ -6,6 +6,8 @@
     passwordAuthentication = false;
   };
 
+  services.autocutsel.enable = true;
+
   services.printing.enable = true;
 
   services.acpid = {
