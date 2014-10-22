@@ -1,0 +1,12 @@
+diff --git a/scripts/nix-build.in b/scripts/nix-build.in
+index f8cf318..d7aba19 100755
+--- a/scripts/nix-build.in
++++ b/scripts/nix-build.in
+@@ -235,7 +235,6 @@ foreach my $expr (@exprs) {
+             'if [ "$(type -t runHook)" = function ]; then runHook shellHook; fi; ' .
+             ($pure ? '' : 'PATH=$PATH:$p; unset p; ') .
+             'set +e; ' .
+-            '[ -n "$PS1" ] && PS1="\n\[\033[1;32m\][nix-shell:\w]$\[\033[0m\] "; ' .
+             'unset NIX_ENFORCE_PURITY; ' .
+             'unset NIX_INDENT_MAKE; ' .
+             'shopt -u nullglob; ' .

@@ -28,6 +28,7 @@
     mysql
     vi-mutt
     nixops
+    vi-nix
     nix-prefetch-scripts
     nix-repl
     nmap
@@ -83,5 +84,6 @@
     vi-surf    = pkgs.callPackage ./packages/vi-surf {};
     vi-mutt    = pkgs.callPackage ./packages/vi-mutt {};
     vi-zathura = pkgs.callPackage ./packages/vi-zathura {};
+    vi-nix     = pkgs.callPackage ./packages/vi-nix {};
   };
 }
