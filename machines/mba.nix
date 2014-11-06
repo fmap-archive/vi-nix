@@ -12,23 +12,11 @@
   boot.extraModulePackages = [ ];
 
   boot.initrd.luks.devices = [
-    { name = "tomb"; device = "/dev/sda4"; preLVM = true; }
+    { name = "tomb"; device = "/dev/sda2"; preLVM = true; }
   ];
 
   fileSystems."/" =
-    { device = "/dev/mapper/rings-root";
-      fsType = "ext4";
-      options = "rw,data=ordered,relatime";
-    };
-
-  fileSystems."/tmp" =
-    { device = "/dev/mapper/rings-tmp";
-      fsType = "ext4";
-      options = "rw,relatime";
-    };
-
-  fileSystems."/home" =
-    { device = "/dev/mapper/rings-home";
+    { device = "/dev/mapper/tomb";
       fsType = "ext4";
       options = "rw,data=ordered,relatime";
     };
@@ -39,12 +27,7 @@
       options = "rw,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro,relatime";
     };
 
-  fileSystems."/media/wadler" =
-    { device = "/dev/sda2";
-      fsType = "hfsplus";
-    };
-
-  swapDevices =[ ];
+  swapDevices = [ ];
 
   boot.loader.grub.enable = false;
   boot.loader.gummiboot.enable = true;
