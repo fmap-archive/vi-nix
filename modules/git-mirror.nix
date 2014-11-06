@@ -38,7 +38,7 @@ in
         [[ -z "$KeyFile" ]] || {
           export GIT_SSH=$(mktemp);
           trap "rm -f $GIT_SSH" 0
-          echo 'ssh -i '"$KeyFile"' $@' > $GIT_SSH
+          echo 'ssh -o "StrictHostKeyChecking no" -i '"$KeyFile"' $@' > $GIT_SSH
           chmod +x $GIT_SSH
         }
 
