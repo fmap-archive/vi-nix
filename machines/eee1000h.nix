@@ -52,4 +52,8 @@
   systemd.timers.afraidDNS.timerConfig = {
     OnCalendar = "hourly";
   };
+
+  services.logind.extraConfig = ''
+    HandleLidSwitch=ignore
+  '';
 }
