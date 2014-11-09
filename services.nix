@@ -2,6 +2,7 @@
 
 {
   services.openssh = {
+    enable = true;
     passwordAuthentication = false;
     challengeResponseAuthentication = false;
     permitRootLogin = "no";
@@ -10,6 +11,10 @@
       MACs hmac-sha2-512
     '';
   };
+
+  services.tor.hiddenServices = [
+    { name = "ssh"; port = 22; }
+  ];
 
   services.autocutsel.enable = !config.environment.isServer;
 
