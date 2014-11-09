@@ -2,8 +2,13 @@
 
 {
   services.openssh = {
-    enable = true;
     passwordAuthentication = false;
+    challengeResponseAuthentication = false;
+    permitRootLogin = "no";
+    extraConfig = ''
+      Ciphers aes256-ctr
+      MACs hmac-sha2-512
+    '';
   };
 
   services.autocutsel.enable = !config.environment.isServer;

@@ -35,4 +35,12 @@
   networking.wireless.enable = false;
 
   environment.isServer = true;
+
+  networking.firewall.enable = true;
+  networking.firewall.rejectPackets = true;
+  networking.firewall.allowPing = false;
+  networking.firewall.allowedTCPPorts = [22];
+  networking.firewall.allowedUDPPortRanges = [];
+
+  services.openssh.enable = true;
 }
