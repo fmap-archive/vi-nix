@@ -43,4 +43,13 @@
   networking.firewall.allowedUDPPortRanges = [];
 
   services.openssh.enable = true;
+
+  services.afraidDNS = {
+    enable = true;
+    accessKey = builtins.readFile ../secrets/afraid.birkhoff.access;
+  };
+
+  systemd.timers.afraidDNS.timerConfig = {
+    OnCalendar = "hourly";
+  };
 }

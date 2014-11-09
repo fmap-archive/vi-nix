@@ -13,6 +13,7 @@
       ../modules/bitlbee-signing.nix
       ../modules/git-mirror.nix
       ../modules/autocutsel.nix
+      ../modules/afraid-dyndns.nix
       ../modules/secrets.nix
     ];
 }
