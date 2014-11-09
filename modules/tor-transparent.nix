@@ -29,9 +29,6 @@ in {
     networking.firewall.enable = true;
 
     networking.firewall.extraCommands = ''
-      iptables -F
-      iptables -t nat -F
-
       iptables -t nat -A OUTPUT -m owner --uid-owner ${toString config.ids.uids.tor} -j RETURN
       iptables -t nat -A OUTPUT -p udp --dport 53 -j REDIRECT --to-ports 53
 
