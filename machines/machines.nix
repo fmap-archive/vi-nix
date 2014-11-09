@@ -14,6 +14,5 @@
       ../modules/git-mirror.nix
       ../modules/autocutsel.nix
       ../modules/secrets.nix
-      <nixos/modules/programs/virtualbox.nix>
     ];
 }

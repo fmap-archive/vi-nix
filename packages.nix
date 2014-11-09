@@ -2,75 +2,74 @@
 {
   environment.systemPackages = with pkgs; [
     acpi
-    acpid
     bc
     bind
     binutils
     cacert
     coreutils
     dos2unix
-    exif
-    fbreader
-    ffmpeg
     file
     git
-    gitAndTools.hub
     gnumake
     gnupg
     gnused
     htop
-    imagemagick
     inetutils
-    irssi
     lsof
     mercurial
+    nix-prefetch-scripts
+    nix-repl
+    rsync
+    tcpdump
+    tmux
+    tree
+    unzip
+    vim
+    wget
+    zip
+  ] ++ (if ! config.environment.isServer then [
+    acpid
+    calibre
+    dzen2
+    exif
+    fbreader
+    feh
+    ffmpeg
+    gitAndTools.hub
+    gnome.zenity
+    imagemagick
+    irssi
+    mnemosyne
     mplayer
     msmtp
     mysql
-    vi-mutt
     nixops
-    vi-nix
-    nix-prefetch-scripts
-    nix-repl
     nmap
+    offlineimap
     pdftk
+    perlPackages.CryptBlowfish
+    perlPackages.CryptDH
+    perlPackages.CryptOpenSSLBignum
+    perlPackages.MathBigInt
+    pinentry
     pkgconfig
     postgresql
     proxychains
     psmisc
     python27Packages.mutagen
-    rsync
-    s3cmd_15_pre_81e3842f7a
-    tcpdump
-    texLiveFull
-    tmux
-    tree
-    unclutter
-    unzip
-    vim
-    w3m
-    wget
-    wireshark
-    youtubeDL
-    zip
-    zlib
-    perlPackages.CryptBlowfish
-    perlPackages.CryptDH
-    perlPackages.CryptOpenSSLBignum
-    perlPackages.MathBigInt
-  ] ++ (if ! config.environment.isServer then [
-    calibre
-    dzen2
-    feh
-    gnome.zenity
-    mnemosyne
-    offlineimap
-    pinentry
     redshift
     rxvt_unicode
+    s3cmd_15_pre_81e3842f7a
     scrot
     slock
+    texLiveFull
+    unclutter
+    vi-nix
+    vi-mutt
     vi-surf
+    vi-zathura
+    w3m
+    wireshark
     wpa_supplicant
     xclip
     xlibs.xev
@@ -78,7 +77,8 @@
     xlibs.xkbcomp
     xorg.xkill
     xorg.xwininfo
-    vi-zathura
+    youtubeDL
+    zlib
   ] else []);
 
   nixpkgs.config.packageOverrides = pkgs : {

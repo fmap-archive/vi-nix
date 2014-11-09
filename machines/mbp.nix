@@ -3,6 +3,7 @@
 {
   imports =
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
+      <nixos/modules/programs/virtualbox.nix>
       ./machines.nix
     ];
 

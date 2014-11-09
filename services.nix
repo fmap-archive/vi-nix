@@ -6,9 +6,9 @@
     passwordAuthentication = false;
   };
 
-  services.autocutsel.enable = true;
+  services.autocutsel.enable = !config.environment.isServer;
 
-  services.printing.enable = true;
+  services.printing.enable = false;
 
   services.acpid = {
     enable = !config.environment.isServer;
@@ -45,16 +45,16 @@
       "*/5 * * * * vi /home/vi/bin/cron/dwarf"
     ];
 
-  services.git-mirror.remotes = [
+  services.git-mirror.remotes = if config.environment.isServer then [] else [
     { repo = "git@github.com:fmap/vi-etc.git"; name = "vi-etc"; key = "/etc/keys/github.vi-etc.id_rsa"; }
     { repo = "git@github.com:fmap/vi-bin.git"; name = "vi-bin"; key = "/etc/keys/github.vi-bin.id_rsa"; }
   ];
 
-  services.secrets = [
+  services.secrets = if (config.services.git-mirror.remotes == []) then [] else [
     { key = "github.vi-bin.id_rsa"; user = "root"; group = "root"; chmod = "0"; }
     { key = "github.vi-etc.id_rsa"; user = "root"; group = "root"; chmod = "0"; }
   ];
 
-  services.mysql.enable = true;
+  services.mysql.enable = !config.environment.isServer;
   services.mysql.package = pkgs.mysql;
 }
