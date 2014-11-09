@@ -10,6 +10,7 @@
     coreutils
     dos2unix
     exif
+    fbreader
     ffmpeg
     file
     git
