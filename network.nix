@@ -1,6 +1,14 @@
-{ config, lib, pkgs, ... }:
+{ network.description = "vi's network";
 
-{ networking.enableIPv6 = false;
+  maclane = { 
+    imports = [./physical/mba.nix ./logical/maclane.nix];
+  };
 
-  networking.useTorAsTransparentProxy = !config.environment.isServer;
+  birkhoff = { 
+    imports = [./physical/eee1000h.nix ./logical/birkhoff.nix]; 
+  };
+  
+  euclid = { 
+    imports = [./physical/mbp.nix ./logical/euclid.nix]; 
+  };
 }

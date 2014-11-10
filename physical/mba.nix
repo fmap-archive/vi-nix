@@ -1,11 +1,9 @@
 { config, pkgs, ... }:
 
-{
-  imports =
-    [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
-      <nixos/modules/programs/virtualbox.nix>
-      ./machines.nix
-    ];
+{ imports = [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix> ];
+  
+  deployment.targetEnv = "none";
+  deployment.targetHost = "5dyt5udbhvh4bhxr.onion";
 
   boot.initrd.kernelModules = [ "dm_crypt" "fbcon" "aesni_intel" "hid_apple" ];
   boot.initrd.availableKernelModules = [ "xhci_hcd" "ehci_pci" "ahci" ];
@@ -35,16 +33,11 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.gummiboot.timeout = 4;
 
-  networking.hostName = "maclane";
-  networking.wireless.enable = true;
-
+  nix.maxJobs = 4;
+  
   services.xserver.multitouch = {
     enable       = true;
     invertScroll = true;
     ignorePalm   = true;
   };
-
-  environment.isServer = false;
-
-  nix.maxJobs = 4;
 }

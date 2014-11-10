@@ -1,11 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
-      <nixos/modules/programs/virtualbox.nix>
-      ./machines.nix
-    ];
+  imports = [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix> ];
+  
+  deployment.targetEnv = "none";
+  deployment.targetHost = "ldjsxmuks7zlsyxw.onion";
 
   boot.kernelPackages = pkgs.linuxPackages_3_14;
   boot.initrd.kernelModules = [ "dm_crypt" "fbcon" "aesni_intel" "hid_apple" "wl" "kvm-intel" "fuse" ];
@@ -44,15 +43,12 @@
       fsType = "vfat";
     };
 
-  swapDevices =
-    [
-    ];
+  swapDevices = []; 
 
   boot.loader.grub.enable = false;
   boot.loader.gummiboot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "euclid";
   networking.wireless.enable = true;
 
   i18n.consoleFont = "sun12x22";
@@ -67,6 +63,4 @@
   };
 
   nix.maxJobs = 4;
-
-  environment.isServer = false;
 }
