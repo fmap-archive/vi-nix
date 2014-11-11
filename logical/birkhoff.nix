@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 { imports = [ ./roles/common.nix ];
 
   networking.hostName = "birkhoff";
@@ -16,8 +16,9 @@
   '';
 
   services.znc = {
-    enable = true;
-    mutable = false;
+    enable         = true;
+    mutable        = false;
+    modulePackages = [pkgs.vi-znc.modules.privmsg];
   };
 
   services.tor.hiddenServices = [
@@ -25,7 +26,7 @@
   ];
 
   # declarative later:
-  services.znc.zncConf = let znc = config.services.znc; in ''
+  services.znc.zncConf = with builtins; let znc = config.services.znc; in ''
     AnonIPLimit = 10
     ConnectDelay = 8
     MaxBufferSize = 500
@@ -53,11 +54,12 @@
       DenyLoadMod = false
       DenySetBindHost = true
       MultiClients = true
+      LoadModule = privmsg
       <Network freenode>
         Ident = WashIrving
         Nick = Qfwfq
         RealName = Washington Irving
-        LoadModule = nickserv ${builtins.readFile ../secrets/freenode.nickserv}
+        LoadModule = nickserv ${readFile ../secrets/freenode.nickserv}
         IRCConnectEnabled = true
         Server = irc.freenode.net +6697
         <Chan #haskell>
@@ -70,10 +72,18 @@
         Nick = vi
         RealName = vi
         IRCConnectEnabled = true
-        Server = zalora.irc.slack.com +6667 ${builtins.readFile ../secrets/zalora.irc-gateway}
+        Server = zalora.irc.slack.com +6667 ${readFile ../secrets/zalora.irc-gateway}
+        <Chan #general>
+          Detached =true
+        </Chan>
         <Chan #fpdelta>
         </Chan>
+        <Chan #fp-at-office>
+          Detached =true
+        </Chan>
         <Chan #nix-users>
+        </Chan>
+        <Chan #devops-internal>
         </Chan>
       </Network>
       <Pass password>
