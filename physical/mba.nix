@@ -33,6 +33,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.gummiboot.timeout = 4;
 
+  nixpkgs.system = "x86_64-linux";
+
   nix.maxJobs = 4;
   
   services.xserver.multitouch = {

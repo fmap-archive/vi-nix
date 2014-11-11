@@ -30,5 +30,7 @@
 
   networking.wireless.enable = true;
 
+  nixpkgs.system = "i686-linux";
+
   nix.maxJobs = 2;
 }

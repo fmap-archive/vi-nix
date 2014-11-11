@@ -62,5 +62,7 @@
     videoDrivers = [ "intel" ];
   };
 
+  nixpkgs.system = "x86_64-linux";
+
   nix.maxJobs = 4;
 }
