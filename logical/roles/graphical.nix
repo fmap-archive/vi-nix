@@ -28,7 +28,7 @@
     gitAndTools.hub
     gnome.zenity
     imagemagick
-    irssi
+    vi-irssi
     mnemosyne
     mplayer
     msmtp

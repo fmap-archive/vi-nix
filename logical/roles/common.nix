@@ -76,6 +76,7 @@
     vi-zathura = pkgs.callPackage ../../packages/vi-zathura {};
     vi-nix     = pkgs.callPackage ../../packages/vi-nix {};
     vi-znc     = pkgs.callPackage ../../packages/vi-znc {};
+    vi-irssi   = pkgs.callPackage ../../packages/vi-irssi {};
   };
   # Networking
   networking.enableIPv6 = false;
