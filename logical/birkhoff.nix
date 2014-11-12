@@ -47,9 +47,10 @@
     <User vi>
       Admin = true
       Allow = *
-      AppendTimestamp = false
       AutoClearChanBuffer = false
       Buffer = 150
+      AppendTimestamp = false
+      PrependTimestamp = false
       ChanModes = +stn
       DenyLoadMod = false
       DenySetBindHost = true
