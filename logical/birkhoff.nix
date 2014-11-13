@@ -63,7 +63,7 @@
         LoadModule = nickserv ${readFile ../secrets/freenode.nickserv}
         IRCConnectEnabled = true
         Server = irc.freenode.net +6697
-        <Chan #haskell>
+        <Chan ##hplusroadmap>
         </Chan>
         <Chan #hackerspacesg>
         </Chan>
