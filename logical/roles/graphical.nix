@@ -94,4 +94,8 @@
       Type = "forking";
     };
   };
+
+  services.cron.systemCronJobs = [
+    "*/5 * * * * vi /home/vi/bin/cron/dwarf"
+  ];
 }
