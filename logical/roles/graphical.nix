@@ -17,6 +17,11 @@
 
   fonts.enableFontDir = true;
 
+  fonts.fonts = with pkgs; [
+    otf-letter-gothic-mono
+  ];
+
+
   environment.systemPackages = with pkgs; [
     acpid
     calibre

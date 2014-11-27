@@ -71,12 +71,13 @@
     zip
   ];
   nixpkgs.config.packageOverrides = pkgs : {
-    vi-surf    = pkgs.callPackage ../../packages/vi-surf {};
-    vi-mutt    = pkgs.callPackage ../../packages/vi-mutt {};
-    vi-zathura = pkgs.callPackage ../../packages/vi-zathura {};
-    vi-nix     = pkgs.callPackage ../../packages/vi-nix {};
-    vi-znc     = pkgs.callPackage ../../packages/vi-znc {};
-    vi-irssi   = pkgs.callPackage ../../packages/vi-irssi {};
+    vi-surf                = pkgs.callPackage ../../packages/vi-surf {};
+    vi-mutt                = pkgs.callPackage ../../packages/vi-mutt {};
+    vi-zathura             = pkgs.callPackage ../../packages/vi-zathura {};
+    vi-nix                 = pkgs.callPackage ../../packages/vi-nix {};
+    vi-znc                 = pkgs.callPackage ../../packages/vi-znc {};
+    vi-irssi               = pkgs.callPackage ../../packages/vi-irssi {};
+    otf-letter-gothic-mono = pkgs.callPackage ../../packages/otf-letter-gothic-mono {};
   };
   # Networking
   networking.enableIPv6 = false;
