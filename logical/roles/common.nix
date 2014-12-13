@@ -61,6 +61,7 @@
     mercurial
     nix-prefetch-scripts
     nix-repl
+    nix-exec
     rsync
     tcpdump
     tmux
