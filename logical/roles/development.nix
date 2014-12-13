@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
-{ imports = [ <nixos/modules/programs/virtualbox.nix> ];
+{ services.virtualboxGuest.enable = false;
+  services.virtualboxHost.enable = true;
 
   services.mysql.enable = true;
   services.mysql.package = pkgs.mysql;
