@@ -1,6 +1,6 @@
 # tor transparent proxy
 { config, lib, ... }:
-{ services.tor.client.enable = true;
+{ services.tor.enable = true;
 
   # Tor configuration. With the property unset, the file reads:
   #
@@ -9,7 +9,7 @@
   #    SOCKSPort 127.0.0.1:9050 IsolateDestAddr
   #    SOCKSPort 127.0.0.1:9063
 
-  services.tor.config = ''
+  services.tor.extraConfig = ''
     TransPort 9040
     DNSPort 53
     AutomapHostsOnResolve 1

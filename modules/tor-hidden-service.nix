@@ -14,9 +14,9 @@ in {
       message   = "all hidden services should define a name and a port..";
     }) hiddenServices;
 
-    services.tor.client.enable = true;
+    services.tor.enable = true;
 
-    services.tor.config = concatStringsSep "\n" (map (hiddenService: ''
+    services.tor.extraConfig = concatStringsSep "\n" (map (hiddenService: ''
       HiddenServiceDir /var/lib/tor/${hiddenService.name}/
       HiddenServicePort ${toString hiddenService.port} 127.0.0.1:${toString hiddenService.port}
     '') hiddenServices);
