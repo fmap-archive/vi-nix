@@ -1,5 +1,4 @@
 - Birkhoff should synchronise Mnemosyne databases.
-- Disable password login for root.
 - Ensure firewall restricts all remote access to mysqld.
 - Implement a mesh topology of hosts with spiped.
 - On portable devices, a systemd service to spoof MAC addresses on all interfaces at boot.
