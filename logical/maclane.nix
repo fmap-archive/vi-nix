@@ -9,4 +9,6 @@
 
   networking.hostName = "maclane";
   networking.wireless.enable = true;
+
+  networking.extraHosts = builtins.readFile <secrets/zalora.extra-hosts>;
 }
