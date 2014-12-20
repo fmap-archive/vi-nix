@@ -42,6 +42,11 @@
   ];
 
   nix.trustedBinaryCaches = config.nix.binaryCaches;
+
+  nix.extraOptions = ''
+    allow-unsafe-native-code-during-evaluation = true
+  '';
+
   # Core Packages
   environment.systemPackages = with pkgs; [
     acpi
