@@ -61,6 +61,7 @@
     gnumake
     gnupg
     gnused
+    graphviz
     htop
     inetutils
     lsof
@@ -68,6 +69,7 @@
     nix-prefetch-scripts
     nix-repl
     nix-exec
+    openssl
     rsync
     tcpdump
     tmux
