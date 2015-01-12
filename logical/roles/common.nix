@@ -45,6 +45,7 @@
 
   nix.extraOptions = ''
     allow-unsafe-native-code-during-evaluation = true
+    allow-unfree = true
   '';
 
   # Core Packages
