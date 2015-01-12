@@ -89,18 +89,42 @@
     vi-irssi               = pkgs.callPackage ../../packages/vi-irssi {};
     otf-letter-gothic-mono = pkgs.callPackage ../../packages/otf-letter-gothic-mono {};
   };
+
   # Networking
   networking.enableIPv6 = false;
+
   # Services
   services.openssh = {
     enable = true;
     passwordAuthentication = false;
     challengeResponseAuthentication = false;
+    listenAddresses = [{ addr = "127.0.0.1"; port = 22; }];
+    hostKeys = [
+     { path = "/etc/ssh/ssh_host_ed25519_key";
+       type = "ed25519";
+       bits = 9001; # ACHTUNG! Fixed length key, but nixpkgs balks if this is unspecified. OpenSSH balks if this is specified but small.
+     }
+     { path = "/etc/ssh/ssh_host_rsa_key";
+       type = "rsa";
+       bits = 4096;
+     }
+    ];
     extraConfig = ''
-      Ciphers aes256-ctr
-      MACs hmac-sha2-512
+      KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
+      Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
+      MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-ripemd160-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,hmac-ripemd160,umac-128@openssh.com
     '';
   };
+
+  programs.ssh.extraConfig = ''
+    Host github.com
+      KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256,diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1
+    Host *
+      KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
+      Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
+      MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-ripemd160-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,hmac-ripemd160,umac-128@openssh.com
+      PasswordAuthentication no
+  '';
 
   services.tor.hiddenServices = [
     { name = "ssh"; port = 22; }
