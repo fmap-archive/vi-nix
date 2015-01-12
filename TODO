@@ -1,5 +1,4 @@
 - Birkhoff should synchronise Mnemosyne databases.
-- Ensure firewall restricts all remote access to mysqld.
 - Implement a mesh topology of hosts with spiped.
 - On portable devices, a systemd service to spoof MAC addresses on all interfaces at boot.
 - Reconstruct ZNC configuration with Nix expressions.
