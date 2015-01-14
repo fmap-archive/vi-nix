@@ -33,11 +33,13 @@
     gitAndTools.hub
     gnome.zenity
     imagemagick
-    vi-irssi
+    irssi
     mnemosyne
     mplayer
     msmtp
+    mutt
     mysql
+    nix
     nixops
     nmap
     offlineimap
@@ -57,12 +59,9 @@
     s3cmd_15_pre_81e3842f7a
     scrot
     slock
+    surf
     texLiveFull
     unclutter
-    vi-nix
-    vi-mutt
-    vi-surf
-    vi-zathura
     w3m
     wpa_supplicant
     xclip
@@ -72,6 +71,7 @@
     xorg.xkill
     xorg.xwininfo
     youtubeDL
+    zathura
     zlib
   ];
 

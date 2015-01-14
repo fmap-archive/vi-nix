@@ -81,14 +81,14 @@
     zip
   ];
   nixpkgs.config.packageOverrides = base: {
-    vi-surf                = pkgs.callPackage ../../packages/vi-surf {};
-    vi-mutt                = pkgs.callPackage ../../packages/vi-mutt {};
-    vi-zathura             = pkgs.callPackage ../../packages/vi-zathura {};
-    vi-nix                 = pkgs.callPackage ../../packages/vi-nix {};
-    vi-znc                 = pkgs.callPackage ../../packages/vi-znc {};
-    vi-irssi               = pkgs.callPackage ../../packages/vi-irssi {};
+    irssi                  = pkgs.callPackage ../../packages/irssi   { inherit base; };
+    mutt                   = pkgs.callPackage ../../packages/mutt    { inherit base; };
+    nix                    = pkgs.callPackage ../../packages/nix     { inherit base; };
     otf-letter-gothic-mono = pkgs.callPackage ../../packages/otf-letter-gothic-mono {};
-    tor                    = pkgs.callPackage ../../packages/tor/faster-ecdh.nix { inherit base; };
+    surf                   = pkgs.callPackage ../../packages/surf    { inherit base; };
+    tor                    = pkgs.callPackage ../../packages/tor     { inherit base; };
+    zathura                = pkgs.callPackage ../../packages/zathura { inherit base; };
+    znc                    = pkgs.callPackage ../../packages/znc     { inherit base; };
   };
 
   # Networking
