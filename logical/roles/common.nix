@@ -80,7 +80,7 @@
     wget
     zip
   ];
-  nixpkgs.config.packageOverrides = pkgs : {
+  nixpkgs.config.packageOverrides = base: {
     vi-surf                = pkgs.callPackage ../../packages/vi-surf {};
     vi-mutt                = pkgs.callPackage ../../packages/vi-mutt {};
     vi-zathura             = pkgs.callPackage ../../packages/vi-zathura {};
@@ -88,6 +88,7 @@
     vi-znc                 = pkgs.callPackage ../../packages/vi-znc {};
     vi-irssi               = pkgs.callPackage ../../packages/vi-irssi {};
     otf-letter-gothic-mono = pkgs.callPackage ../../packages/otf-letter-gothic-mono {};
+    tor                    = pkgs.callPackage ../../packages/tor/faster-ecdh.nix { inherit base; };
   };
 
   # Networking
