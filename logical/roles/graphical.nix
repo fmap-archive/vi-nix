@@ -64,7 +64,6 @@
     vi-surf
     vi-zathura
     w3m
-    wireshark
     wpa_supplicant
     xclip
     xlibs.xev
