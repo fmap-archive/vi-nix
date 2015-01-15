@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
-{ services.virtualboxGuest.enable = false;
+{ networking.extraHosts = builtins.readFile <secrets/zalora.extra-hosts>;
+
+  services.virtualboxGuest.enable = false;
   services.virtualboxHost.enable = true;
 
   services.mysql.enable = true;
