@@ -18,7 +18,7 @@
   services.znc = {
     enable         = true;
     mutable        = false;
-    modulePackages = [pkgs.vi-znc.modules.privmsg];
+    modulePackages = [pkgs.znc.modules.privmsg];
   };
 
   services.tor.hiddenServices = [
