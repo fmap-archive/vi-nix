@@ -83,7 +83,6 @@
     surf                   = pkgs.callPackage ../../packages/surf    { inherit base; };
     tor                    = pkgs.callPackage ../../packages/tor     { inherit base; };
     zathura                = pkgs.callPackage ../../packages/zathura { inherit base; };
-    znc                    = pkgs.callPackage ../../packages/znc     { inherit base; };
   };
 
   # Networking
