@@ -76,7 +76,6 @@
     zip
   ];
   nixpkgs.config.packageOverrides = base: {
-    irssi                  = pkgs.callPackage ../../packages/irssi   { inherit base; };
     mutt                   = pkgs.callPackage ../../packages/mutt    { inherit base; };
     nix                    = pkgs.callPackage ../../packages/nix     { inherit base; };
     otf-letter-gothic-mono = pkgs.callPackage ../../packages/otf-letter-gothic-mono {};
