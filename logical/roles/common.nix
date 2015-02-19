@@ -67,6 +67,7 @@
     nix-exec
     openssl
     rsync
+    shallot
     tcpdump
     tmux
     tree
@@ -75,10 +76,12 @@
     wget
     zip
   ];
+
   nixpkgs.config.packageOverrides = base: {
     mutt                   = pkgs.callPackage <vi-nix/packages/mutt>    { inherit base; };
     nix                    = pkgs.callPackage <vi-nix/packages/nix>     { inherit base; };
     otf-letter-gothic-mono = pkgs.callPackage <vi-nix/packages/otf-letter-gothic-mono> {};
+    shallot                = pkgs.callPackage <vi-nix/packages/shallot>                {};
     surf                   = pkgs.callPackage <vi-nix/packages/surf>    { inherit base; };
   # tor                    = pkgs.callPackage <vi-nix/packages/tor>     { inherit base; };
     zathura                = pkgs.callPackage <vi-nix/packages/zathura> { inherit base; };
