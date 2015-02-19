@@ -24,7 +24,6 @@
 
   environment.systemPackages = with pkgs; [
     acpid
-    calibre
     dzen2
     exif
     fbreader
