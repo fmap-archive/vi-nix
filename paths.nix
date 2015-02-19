@@ -14,6 +14,14 @@ in rec {
       url = "git://github.com/NixOS/nixpkgs.git";
       rev = "4c125ceddc834be9567c6ea4404021fa13d844c3";
     };
+    surf-vi = {
+      url = "git://github.com/fmap/surf-vi";
+      rev = "724a391dee3bf3df5172ef7d3cb2bc0c205670f5";
+    };
+    zathura-vi = {
+      url = "git://github.com/fmap/zathura-vi";
+      rev = "e86077de8a9950fb72a9935772aa3b6eba70e97e";
+    };
   };
 
   # $CHECKOUT_DEST must be exported and point to an absolute path.
