@@ -5,7 +5,6 @@ let
 in rec {
   defscope = {
     vi-nix = ./.;
-    secrets = ./secrets;
     nixos = ./vendor/nixpkgs/nixos;
   };
 

@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
-{ networking.extraHosts = builtins.readFile <secrets/zalora.extra-hosts>;
+{ networking.extraHosts = builtins.readFile <vi-nix/secrets/zalora.extra-hosts>;
 
   services.virtualboxGuest.enable = false;
   services.virtualboxHost.enable = true;

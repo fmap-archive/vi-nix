@@ -2,7 +2,7 @@
 
 stdenv.mkDerivation {
   name = "otf-letter-gothic-mono";
-  src = ./otf;
+  src = <vi-nix/packages/otf-letter-gothic-mono/otf>;
   buildPhase = "true";
   installPhase = ''
     mkdir -p $out/share/fonts/

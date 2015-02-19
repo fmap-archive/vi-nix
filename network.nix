@@ -1,14 +1,14 @@
 { network.description = "vi's network";
 
   maclane = { 
-    imports = [./physical/mba.nix ./logical/maclane.nix];
+    imports = [ <vi-nix/physical/mba.nix> <vi-nix/logical/maclane.nix>];
   };
 
   birkhoff = { 
-    imports = [./physical/eee1000h.nix ./logical/birkhoff.nix]; 
+    imports = [ <vi-nix/physical/eee1000h.nix> <vi-nix/logical/birkhoff.nix> ]; 
   };
   
   euclid = { 
-    imports = [./physical/mbp.nix ./logical/euclid.nix]; 
+    imports = [ <vi-nix/physical/mbp.nix> <vi-nix/logical/euclid.nix> ];
   };
 }

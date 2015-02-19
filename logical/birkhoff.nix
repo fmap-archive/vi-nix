@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
-{ imports = [ ./roles/common.nix ];
+{ imports = [ <vi-nix/logical/roles/common.nix> ];
 
   networking.hostName = "birkhoff";
 
@@ -60,7 +60,7 @@
         Ident = WashIrving
         Nick = Qfwfq
         RealName = Washington Irving
-        LoadModule = nickserv ${readFile ../secrets/freenode.nickserv}
+        LoadModule = nickserv ${readFile <vi-nix/secrets/freenode.nickserv>}
         IRCConnectEnabled = true
         Server = irc.freenode.net +6697
         <Chan ##hplusroadmap>
@@ -73,7 +73,7 @@
         Nick = vi
         RealName = vi
         IRCConnectEnabled = true
-        Server = zalora.irc.slack.com +6667 ${readFile ../secrets/zalora.irc-gateway}
+        Server = zalora.irc.slack.com +6667 ${readFile <vi-nix/secrets/zalora.irc-gateway>}
         <Chan #general>
           Detached =true
         </Chan>

@@ -7,5 +7,5 @@ pkgs.lib.overrideDerivation base.mutt (_: {
   };
   buildInputs = with pkgs; [ autoconf automake ];
   preConfigure = "autoreconf --install";
-  patches = [ ./hidestatus.patch ];
+  patches = [ <vi-nix/packages/mutt/hidestatus.patch> ];
 })

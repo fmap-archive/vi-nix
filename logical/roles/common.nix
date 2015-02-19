@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }:
 { imports = [
-    ../../modules/git-mirror.nix
-    ../../modules/secrets.nix
-    ../../modules/tor-hidden-service.nix
+    <vi-nix/modules/git-mirror.nix>
+    <vi-nix/modules/secrets.nix>
+    <vi-nix/modules/tor-hidden-service.nix>
   ];
   
   users.mutableUsers = false;
