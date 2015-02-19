@@ -6,7 +6,7 @@ in rec {
   defscope = {
     vi-nix = ./.;
     secrets = ./secrets;
-    nixos = <nixpkgs/nixos>;
+    nixos = ./vendor/nixpkgs/nixos;
   };
 
   dependencies = {
