@@ -4,5 +4,4 @@
 - Reconstruct ZNC configuration with Nix expressions.
 - Rewrite physical specifications to be enough to bring us from a fresh install to something we can deploy to.
 - Rotate Tor private keys on portable machines, make hostnames secret to avoid traffic correlation risks.
-- Rotate passwords, migrate 'users' from 'hashedPassword' to 'passwordFile'.
 - The 'graphical' role describes packages that don't depend on a graphical environment, restructure.
