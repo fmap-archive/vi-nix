@@ -76,12 +76,12 @@
     zip
   ];
   nixpkgs.config.packageOverrides = base: {
-    mutt                   = pkgs.callPackage ../../packages/mutt    { inherit base; };
-    nix                    = pkgs.callPackage ../../packages/nix     { inherit base; };
-    otf-letter-gothic-mono = pkgs.callPackage ../../packages/otf-letter-gothic-mono {};
-    surf                   = pkgs.callPackage ../../packages/surf    { inherit base; };
-  # tor                    = pkgs.callPackage ../../packages/tor     { inherit base; };
-    zathura                = pkgs.callPackage ../../packages/zathura { inherit base; };
+    mutt                   = pkgs.callPackage <vi-nix/packages/mutt>    { inherit base; };
+    nix                    = pkgs.callPackage <vi-nix/packages/nix>     { inherit base; };
+    otf-letter-gothic-mono = pkgs.callPackage <vi-nix/packages/otf-letter-gothic-mono> {};
+    surf                   = pkgs.callPackage <vi-nix/packages/surf>    { inherit base; };
+  # tor                    = pkgs.callPackage <vi-nix/packages/tor>     { inherit base; };
+    zathura                = pkgs.callPackage <vi-nix/packages/zathura> { inherit base; };
   };
 
   # Networking
