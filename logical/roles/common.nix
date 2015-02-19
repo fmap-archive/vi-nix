@@ -77,7 +77,7 @@
   ];
   nixpkgs.config.packageOverrides = base: {
     mutt                   = pkgs.callPackage ../../packages/mutt    { inherit base; };
-  # nix                    = pkgs.callPackage ../../packages/nix     { inherit base; };
+    nix                    = pkgs.callPackage ../../packages/nix     { inherit base; };
     otf-letter-gothic-mono = pkgs.callPackage ../../packages/otf-letter-gothic-mono {};
     surf                   = pkgs.callPackage ../../packages/surf    { inherit base; };
   # tor                    = pkgs.callPackage ../../packages/tor     { inherit base; };
