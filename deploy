@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+type -P jq || {
+  echo "You don't seem to have 'jq' installed." >&2
+  echo "Run 'nix-shell -p jq', and then re-execute $0 in that environment." >&2
+  exit 1
+}
+
+set -xeuf;
+
+nix-instantiate --eval -A get-dependencies paths.nix | jq -r . | bash -xe
+
+nixops list | grep -q vi-nix || {
+  nixops create network.nix --deployment vi-nix
+};
+
+export NIX_PATH=vendor
+
+nixops deploy --deployment vi-nix
