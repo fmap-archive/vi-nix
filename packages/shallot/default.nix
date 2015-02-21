@@ -10,6 +10,8 @@ stdenv.mkDerivation {
 
   buildInputs = [openssl];
 
+  patches = [ <vi-nix/packages/shallot/onionlen.patch> ];
+
   buildPhase = ''
     ./configure
     make
