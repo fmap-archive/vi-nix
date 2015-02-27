@@ -11,8 +11,8 @@
   };
 
   systemd.services."display-manager".preStart = ''
-    chmod a+w $(realpath /sys/class/backlight/intel_backlight/brightness)
-    chmod a+w $(realpath '/sys/class/leds/smc::kbd_backlight/brightness')
+    chmod a+w $(realpath /sys/class/backlight/intel_backlight/brightness) || true
+    chmod a+w $(realpath '/sys/class/leds/smc::kbd_backlight/brightness') || true
   '';
 
   fonts.enableFontDir = true;
