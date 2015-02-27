@@ -3,5 +3,4 @@
 - On portable devices, a systemd service to spoof MAC addresses on all interfaces at boot.
 - Reconstruct ZNC configuration with Nix expressions.
 - Rewrite physical specifications to be enough to bring us from a fresh install to something we can deploy to.
-- Rotate Tor private keys on portable machines, make hostnames secret to avoid traffic correlation risks.
 - The 'graphical' role describes packages that don't depend on a graphical environment, restructure.

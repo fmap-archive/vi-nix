@@ -4,7 +4,6 @@
   imports = [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix> ];
   
   deployment.targetEnv = "none";
-  deployment.targetHost = "ldjsxmuks7zlsyxw.onion";
 
   boot.kernelPackages = pkgs.linuxPackages_3_14;
   boot.initrd.kernelModules = [ "dm_crypt" "fbcon" "aesni_intel" "hid_apple" "wl" "kvm-intel" "fuse" ];

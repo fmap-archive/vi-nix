@@ -3,7 +3,6 @@
 { imports = [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix> ];
   
   deployment.targetEnv = "none";
-  deployment.targetHost = "5dyt5udbhvh4bhxr.onion";
 
   boot.initrd.kernelModules = [ "dm_crypt" "fbcon" "aesni_intel" "hid_apple" ];
   boot.initrd.availableKernelModules = [ "xhci_hcd" "ehci_pci" "ahci" ];

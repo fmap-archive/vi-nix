@@ -3,7 +3,6 @@
 { imports = [ <nixos/modules/installer/scan/not-detected.nix> ];
   
   deployment.targetEnv = "none";
-  deployment.targetHost = "tc4ozxdi7wxpmsey.onion";
 
   boot.initrd.availableKernelModules = [ "uhci_hcd" "ehci_hcd" "ata_piix" ];
   boot.kernelModules = ["dm_crypt" "fuse"];
