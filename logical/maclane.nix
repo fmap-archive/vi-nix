@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 { imports = [
     <vi-nix/logical/roles/common.nix>
     <vi-nix/logical/roles/development.nix>
@@ -8,5 +8,6 @@
   ];
 
   networking.hostName = "maclane";
+  deployment.targetHost = lib.removeSuffix "\n" (builtins.readFile <vi-nix/secrets/hidden-services.ssh.maclane.hostname>);
   networking.wireless.enable = true;
 }

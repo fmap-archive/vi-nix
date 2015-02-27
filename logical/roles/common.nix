@@ -132,8 +132,6 @@
     }
   ];
 
-  deployment.targetHost = lib.removeSuffix "\n" (builtins.readFile "${<vi-nix/secrets>}/hidden-services.ssh.${config.networking.hostName}.hostname");
-
   system.activationScripts.ssl = ''
     ln -sf /etc/ssl/certs/ca-bundle.crt /etc/ssl/certs/ca-certificates.crt
   '';

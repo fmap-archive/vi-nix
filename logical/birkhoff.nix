@@ -1,7 +1,9 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 { imports = [ <vi-nix/logical/roles/common.nix> ];
 
   networking.hostName = "birkhoff";
+
+  deployment.targetHost = lib.removeSuffix "\n" (builtins.readFile <vi-nix/secrets/hidden-services.ssh.birkhoff.hostname>);
 
   networking.wireless.enable = false;
     
