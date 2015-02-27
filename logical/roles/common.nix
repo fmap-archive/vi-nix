@@ -67,6 +67,7 @@
     nix-exec
     openssl
     rsync
+    socat
     shallot
     tcpdump
     tmux
