@@ -11,4 +11,8 @@
   euclid = { 
     imports = [ <vi-nix/physical/mbp.nix> <vi-nix/logical/euclid.nix> ];
   };
+
+  lang = {
+    imports = [ <vi-nix/physical/dc3217iye.nix> <vi-nix/logical/lang.nix> ];
+  };
 }
