@@ -33,7 +33,7 @@
     gnome.zenity
     imagemagick
     irssi
-    mnemosyne
+  # mnemosyne
     mplayer
     msmtp
     mutt
@@ -69,7 +69,7 @@
     xlibs.xkbcomp
     xorg.xkill
     xorg.xwininfo
-    youtubeDL
+  # youtubeDL
     zathura
     zlib
   ];
