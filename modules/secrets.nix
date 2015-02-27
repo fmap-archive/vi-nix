@@ -21,7 +21,7 @@ in
       mkdir -p /etc/keys
 
       writeKey() {
-        cp ${<secrets>}/$1 /etc/keys
+        cp ${<vi-nix/secrets>}/$1 /etc/keys
         chown $2:$3 /etc/keys/$1
         chmod $4 /etc/keys/$1
       };
