@@ -1,3 +1,5 @@
+- Append salts to hidden service addresses before encryption, it's easy to brute-force right now.
+- Patch Zathura for a zero-width gutter.
 - Birkhoff should synchronise Mnemosyne databases.
 - Implement a mesh topology of hosts with spiped.
 - On portable devices, a systemd service to spoof MAC addresses on all interfaces at boot.
