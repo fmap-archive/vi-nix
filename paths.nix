@@ -21,6 +21,10 @@ in rec {
       url = "git://github.com/fmap/zathura-vi";
       rev = "e86077de8a9950fb72a9935772aa3b6eba70e97e";
     };
+    jotmuch = {
+      url = "git://github.com/davidlazar/jotmuch";
+      rev = "40494edb10aa87bd04def13df5cfd910b89bc5b9";
+    };
   };
 
   # $CHECKOUT_DEST must be exported and point to an absolute path.

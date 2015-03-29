@@ -60,33 +60,38 @@
     graphviz
     htop
     inetutils
+    jotmuch
     lsof
     mercurial
+    nix-exec
     nix-prefetch-scripts
     nix-repl
-    nix-exec
     openssl
     rsync
-    socat
     shallot
+    socat
     tcpdump
     tmux
     tree
     unzip
+    urlsnap
     vim
     wget
     zip
   ];
 
-  nixpkgs.config.packageOverrides = base: {
-    mutt                   = pkgs.callPackage <vi-nix/packages/mutt>    { inherit base; };
-    nix                    = pkgs.callPackage <vi-nix/packages/nix>     { inherit base; };
-    otf-letter-gothic-mono = pkgs.callPackage <vi-nix/packages/otf-letter-gothic-mono> {};
-    shallot                = pkgs.callPackage <vi-nix/packages/shallot>                {};
-    surf                   = pkgs.callPackage <vi-nix/packages/surf>    { inherit base; };
-  # tor                    = pkgs.callPackage <vi-nix/packages/tor>     { inherit base; };
-    zathura                = pkgs.callPackage <vi-nix/packages/zathura> { inherit base; };
-  };
+  nixpkgs.config.packageOverrides = base: (rec {
+    jotmuch                = pkgs.callPackage <vi-nix/packages/jotmuch>           { inherit urlsnap; };
+    mutt                   = pkgs.callPackage <vi-nix/packages/mutt>                 { inherit base; };
+    nix                    = pkgs.callPackage <vi-nix/packages/nix>                  { inherit base; };
+    otf-letter-gothic-mono = pkgs.callPackage <vi-nix/packages/otf-letter-gothic-mono>              {};
+    shallot                = pkgs.callPackage <vi-nix/packages/shallot>                             {};
+    surf                   = pkgs.callPackage <vi-nix/packages/surf>                 { inherit base; };
+  # tor                    = pkgs.callPackage <vi-nix/packages/tor>                  { inherit base; };
+    urlsnap                = pkgs.callPackage <vi-nix/packages/urlsnap> { webkitgtk2 = webkitgtk280; };
+    webkitgtk280           = pkgs.callPackage <vi-nix/packages/webkitgtk/2.8.0.nix>                 {};
+    zathura                = pkgs.callPackage <vi-nix/packages/zathura>              { inherit base; };
+  });
 
   # Networking
   networking.enableIPv6 = false;
