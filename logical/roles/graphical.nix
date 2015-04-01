@@ -69,7 +69,7 @@
     xlibs.xkbcomp
     xorg.xkill
     xorg.xwininfo
-  # youtubeDL
+    youtubeDL
     zathura
     zlib
   ];
