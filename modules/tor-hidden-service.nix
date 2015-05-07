@@ -19,7 +19,7 @@ in {
 
     services.tor.extraConfig = concatStringsSep "\n" (map (hiddenService: ''
       HiddenServiceDir /var/lib/tor/${hiddenService.name}
-      HiddenServicePort ${toString hiddenService.port} 127.0.0.1:${toString hiddenService.port}
+      HiddenServicePort ${toString (if hasAttr "remote_port" hiddenService then hiddenService.remote_port else hiddenService.port)} 127.0.0.1:${toString hiddenService.port}
     '') hiddenServices);
 
     systemd.services."install-tor-hidden-service-keys" = {

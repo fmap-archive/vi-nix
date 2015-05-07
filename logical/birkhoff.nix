@@ -96,4 +96,15 @@
       </Pass>
     </User>
   '';
+
+  services.muflax-blog = {
+    enable = true;
+    web-server = {
+      port = 9001;
+    };
+    hidden-service = {
+      hostname = "muflax65ngodyewp.onion";
+      private_key = "${<vi-nix/secrets>}/hidden-services.muflax-blog.key";
+    };
+  };
 }

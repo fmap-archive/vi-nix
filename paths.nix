@@ -10,7 +10,7 @@ in rec {
 
   dependencies = {
     nixpkgs = {
-      url = "git://github.com/NixOS/nixpkgs.git";
+      url = "git://github.com/NixOS/nixpkgs";
       rev = "4c125ceddc834be9567c6ea4404021fa13d844c3";
     };
     surf-vi = {
@@ -24,6 +24,10 @@ in rec {
     jotmuch = {
       url = "git://github.com/davidlazar/jotmuch";
       rev = "40494edb10aa87bd04def13df5cfd910b89bc5b9";
+    };
+    muflax-blog = {
+      url = "git://github.com/fmap/muflax.com";
+      rev = "3dab90f72b17fa85d4ea6e71d0c43b04d2a4a074";
     };
   };
 

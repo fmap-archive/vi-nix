@@ -3,6 +3,7 @@
     <vi-nix/modules/git-mirror.nix>
     <vi-nix/modules/secrets.nix>
     <vi-nix/modules/tor-hidden-service.nix>
+    <vi-nix/modules/muflax-blog.nix>
   ];
   
   users.mutableUsers = false;
@@ -82,6 +83,7 @@
 
   nixpkgs.config.packageOverrides = base: (rec {
     jotmuch                = pkgs.callPackage <vi-nix/packages/jotmuch>           { inherit urlsnap; };
+    muflax-blog            = pkgs.callPackage <muflax-blog/maintenance>                             {};
     mutt                   = pkgs.callPackage <vi-nix/packages/mutt>                 { inherit base; };
     nix                    = pkgs.callPackage <vi-nix/packages/nix>                  { inherit base; };
     otf-letter-gothic-mono = pkgs.callPackage <vi-nix/packages/otf-letter-gothic-mono>              {};
